@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ro">
+  <!-- Am schimbat limba -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atelierul Texxturalia | Învelișuri Atavice & Scriituri Sacre</title>
+
+    <!-- Traducere Meta Description pentru Google RO -->
+    <meta
+      name="description"
+      content="Atelierul Texxturalia - Interogând firul dintre corp, spațiu și sârmă prin lucrări textile și metalice unice."
+    />
+    <!-- IMPORTANT: Căile ies un nivel sus (../) pentru a accesa resursele din root -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../images/branding/favicon.ico"
+    />
+    <link rel="stylesheet" href="../style.css" />
+
+    <!-- Fonturile pentru Texxturalia: Montserrat & Cormorant -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@100;200;300;400&display=swap"
+    />
+  </head>
+
+  <body>
+    <!-- 1. MENIUL (Navigația) -->
+    <nav class="navbar">
+      <!-- Logo-ul duce tot la Home RO pentru consistență -->
+      <a href="index.html">
+        <div class="logo">T E X X T U R A L I A</div>
+      </a>
+      <button class="mobile-menu-toggle" aria-label="Meniu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="textiles.html">Învelișuri atavice</a></li>
+        <li><a href="jewelry.html">Scriituri sacre</a></li>
+        <li><a href="decor.html">Dialectici telurice</a></li>
+        <li><a href="guests.html">InterTexxturalia</a></li>
+        <li><a href="manifesto.html">Gnoză</a></li>
+        <!-- Switch înapoi la Engleză (Poarta principală) -->
+        <li class="lang-select"><a href="../index.html">EN</a></li>
+      </ul>
+    </nav>
+
+    <!-- 2. ANTETUL (Hero Section) -->
+    <header class="hero">
+      <div class="hero-content">
+        <h1>Interogând Abisul</h1>
+        <p>
+          (De(Con))Strucția firului. Între veșmântul atavic, planul teluric și
+          sacralitatea firului sideral.
+        </p>
+
+        <!-- GRILA CU CELE 4 PORTALURI (Bestiarul Mistic) -->
+        <div class="portal-grid">
+          <!-- 01. ARACHNE / Învelișuri Atavice -->
+          <div class="portal-item reveal" id="portal-body">
+            <a href="textiles.html" class="btn-primary">
+              <span class="anchor-label">ARACHNE</span>
+              <span class="concept-label">Învelișuri Atavice</span>
+            </a>
+          </div>
+
+          <!-- 02. CORVUS / Scriituri Sacrale -->
+          <div class="portal-item reveal" id="portal-wire">
+            <a href="jewelry.html" class="btn-primary">
+              <span class="anchor-label">CORVUS</span>
+              <span class="concept-label">Scriituri Sacre</span>
+            </a>
+          </div>
+
+          <!-- 03. LETO / Dialectici Telurice -->
+          <div class="portal-item reveal" id="portal-room">
+            <a href="decor.html" class="btn-primary">
+              <span class="anchor-label">LETO</span>
+              <span class="concept-label">Dialectici Telurice</span>
+            </a>
+          </div>
+
+          <!-- 04. ACTAEON / InterTexxturalia -->
+          <div class="portal-item reveal" id="portal-guests">
+            <a href="guests.html" class="btn-primary">
+              <span class="anchor-label">ACTAEON</span>
+              <span class="concept-label">InterTexxturalia</span>
+            </a>
+          </div>
+        </div>
+        <!-- închide .portal-grid -->
+      </div>
+      <!-- închide .hero-content -->
+    </header>
+
+    <!-- 3. SUBSOLUL (Footer minimalist) -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <p>&copy; 2024 TEXXTURALIA. Toate drepturile rezervate.</p>
+        <div class="footer-links">
+          <a href="contact.html">Corespondență</a>
+          <a href="https://instagram.com" target="_blank">Instagram</a>
+          <!-- <a href="https://instagram.com" target="_blank">Instagram haine</a> -->
+          <!-- <a href="https://instagram.com" target="_blank">Instagram bijuterii</a> -->
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+</html>

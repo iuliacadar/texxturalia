@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Corvus | Scriituri Sacre de Texxturalia</title>
+
+    <meta
+      name="description"
+      content="Corvus de Texxturalia: Scriituri sacre în cupru și argint. Sculpturi din sârmă modelate manual care interoghează abisul primordial."
+    />
+
+    <!-- Căile către resursele din root -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../images/branding/favicon.ico"
+    />
+    <link rel="stylesheet" href="../style.css" />
+
+    <!-- Fonturi Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@100;200;300;400&display=swap"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <a href="index.html">
+        <div class="logo">T E X X T U R A L I A</div>
+      </a>
+      <button class="mobile-menu-toggle" aria-label="Meniu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <!-- <span class="bar"></span> -->
+      </button>
+      <ul class="nav-links">
+        <li><a href="textiles.html">Învelișuri atavice</a></li>
+        <li><a href="jewelry.html">Scriituri sacre</a></li>
+        <li><a href="decor.html">Dialectici telurice</a></li>
+        <li><a href="guests.html">InterTexxturalia</a></li>
+        <li><a href="manifesto.html">Gnoză</a></li>
+        <!-- Switch înapoi la Engleză -->
+        <li class="lang-select"><a href="../jewelry.html">EN</a></li>
+      </ul>
+    </nav>
+
+    <!-- Folosim clasa .jewelry-theme pentru atmosfera de cupru/oxid/căldură -->
+    <main class="exhibit-container jewelry-theme">
+      <header class="exhibit-header">
+        <span class="eyebrow">Scriituri Sacre</span>
+        <h1 class="reveal">Corvus</h1>
+        <div class="header-divider reveal"></div>
+        <p class="header-description reveal">
+          Scriitura corbului. Urme sacre de cupru în abisul primordial.
+        </p>
+      </header>
+
+      <section class="exhibit-grid">
+        <!-- Piesa 01 -->
+        <div class="exhibit-item reveal">
+          <!-- Greșit: href="../items/jewelry/metal-script-01.html" (asta te scoate din folderul ro și te duce în cel en). Corect: href="items/jewelry/metal-script-01.html" (fără puncte la început, pentru că ești deja în folderul ro și vrei să intri în subfolderul său de items)-->
+          <a href="items/jewelry/metal-script-01.html">
+            <div class="image-wrapper">
+              <!-- Placeholder pentru imagine -->
+              <div style="height: 500px"></div>
+            </div>
+            <div class="item-info">
+              <span class="item-number">01</span>
+              <h2>Fragment de Fir</h2>
+            </div>
+          </a>
+        </div>
+
+        <!-- Piesa 02 -->
+        <div class="exhibit-item reveal">
+          <a href="#">
+            <div class="image-wrapper">
+              <div style="height: 400px"></div>
+            </div>
+            <div class="item-info">
+              <span class="item-number">02</span>
+              <h2>Nod Spațial</h2>
+            </div>
+          </a>
+        </div>
+
+        <!-- Piesa 03 -->
+        <div class="exhibit-item reveal">
+          <a href="#">
+            <div class="image-wrapper">
+              <div style="height: 450px"></div>
+            </div>
+            <div class="item-info">
+              <span class="item-number">03</span>
+              <h2>Arhitectura Degetelor</h2>
+            </div>
+          </a>
+        </div>
+
+        <!-- Piesa 04 -->
+        <div class="exhibit-item reveal">
+          <a href="#">
+            <div class="image-wrapper">
+              <div style="height: 520px"></div>
+            </div>
+            <div class="item-info">
+              <span class="item-number">04</span>
+              <h2>Ochiul Corbului</h2>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <p>&copy; 2024 TEXXTURALIA. Toate drepturile rezervate.</p>
+        <div class="footer-links">
+          <a href="contact.html">Corespondență</a>
+          <a href="https://instagram.com" target="_blank">Instagram</a>
+          <!-- <a href="https://instagram.com" target="_blank">Instagram haine</a> -->
+          <!-- <a href="https://instagram.com" target="_blank">Instagram bijuterii</a> -->
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+</html>
