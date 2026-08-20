@@ -2,7 +2,7 @@
 
 An immersive, responsive e-commerce matrix and artisanal manifesto mapping out curated design spaces spanning textiles, custom jewelry, and retro-futuristic decor elements.
 
- **Live Interface Platform Deployment:** [iuliacadar.github.io/Texxtuale_Project/](https://github.io)
+ **Live Interface Platform Deployment:** [iuliacadar.github.io/texxturalia/](https://iuliacadar.github.io/texxturalia/)
 
 ---
 
@@ -11,7 +11,7 @@ An immersive, responsive e-commerce matrix and artisanal manifesto mapping out c
 The codebase operates on a decoupled multi-page template structure, isolating specific material domains and administrative assets into dedicated grid matrices:
 
 ```text
-Texxtuale_Project/
+texxturalia/
 ├── index.html            # The primary gallery gate & central storefront experience
 ├── textiles.html         # Specialized portal tracking textile arts and fabric matrices
 ├── jewelry.html          # Custom artisanal jewelry showcases & inventory modules
@@ -48,7 +48,7 @@ To spin up this artisanal matrix locally and audit layout metrics across system 
    ```
 2. **Navigate directly into the project base root layout directory:**
    ```bash
-   cd Texxtuale_Project
+   cd texxturalia
    ```
 3. **Launch the platform via any live local server host utility.**
 
