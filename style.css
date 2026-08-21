@@ -383,6 +383,22 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
+/* Placeholder pentru fotografii care încă nu au fost adăugate.
+   Înlocuiește div-urile inline de tip <div style="height: ...">. */
+.image-placeholder {
+  display: block;
+  background-color: #dcd7cf;
+  border: 1px solid #e6e1d8;
+}
+
+.image-placeholder.tall { height: 700px; }
+.image-placeholder.medium { height: 500px; }
+.image-placeholder.wide { height: 300px; }
+.image-placeholder.short { height: 400px; }
+.image-placeholder.h-600 { height: 600px; }
+.image-placeholder.h-550 { height: 550px; }
+.image-placeholder.h-450 { height: 450px; }
+
 .exhibit-item:hover .image-wrapper {
   transform: scale(0.98);
 }
@@ -863,6 +879,11 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 .error-message-en {
   opacity: 0.6; /* Diminuare pentru varianta secundară */
   font-size: 1.2rem;
+}
+
+.error-message-ro {
+  opacity: 0.5;
+  font-size: 1.1rem;
 }
 
 .btn-back {
