@@ -635,7 +635,7 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 .product-detail-container {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Două coloane egale */
-  padding: 30px 5% 60px;
+  padding: 20px 5% 40px;
   gap: 60px;
   align-items: start;
 }
@@ -651,26 +651,24 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 .gallery {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
+  max-width: 452px;
 }
 
 .gallery-main {
-  background-color: #dcd7cf; /* Nuanța noastră de Azot */
-  padding: 30px;
+  background-color: #dcd7cf;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
 }
 
 .gallery-main img {
-  max-width: 100%;
-  max-height: calc(100vh - 300px); /* încape întreaga fotografie + piculi imagini pe ecran, fără crop */
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   display: block;
-  margin: 0 auto;
-  object-fit: contain;
+  object-fit: cover;
 }
 
-/* Firul de piculi imagini — un scroller orizontal cu 5 piculi vizibile,
-   restul se derulează prin swipe / drag. Scrollbar-ul este ascuns. */
 .gallery-thumbs {
   position: relative;
   overflow-x: auto;
