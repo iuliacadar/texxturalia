@@ -635,7 +635,9 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 .product-detail-container {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Două coloane egale */
-  padding: 20px 5% 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 5% 60px;
   gap: 60px;
   align-items: start;
 }
@@ -664,8 +666,7 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
-  max-height: calc(100vh - 300px);
+  object-fit: contain;
 }
 
 .gallery-thumbs {
