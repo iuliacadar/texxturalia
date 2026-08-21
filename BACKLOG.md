@@ -48,17 +48,17 @@ and beautiful — but it does not scale to a hundred pieces. The long answer to
       names (`orologiul-front.jpg`, `orologiul-chain-detail.jpg`) once the
       hero/detail shots are chosen. Keep home-made, unedited photos — that is
       the atelier soul.
+- [ ] **B&W rescue (isolated)** — a CSS class that grays out a single
+      thumbnail/hero photo on demand, used only to save the *rare* image whose
+      background clashes or whose colour temperature breaks the grid. Not a
+      blanket filter: colour is the material truth of the pieces (copper,
+      turquoise, amber), so B&W is the rescue tool, never the default.
 
 ## Code & Maintenance
 
-- [ ] **Empty stub** — `ro/items/jewelry/metal-script-02.html` is a 0-byte
-      file. Either fill it or delete it.
 - [ ] **Placeholder tiles** — the four placeholder pieces in the gallery
       pages (`Wire Fragment`, `Spatial Knot`, `Finger Architecture`,
       `Raven's Eye`) will be replaced by real curated pieces.
-- [ ] **README update** — the README's file-layout tree and clone URL are
-      stale (`git clone https://github.com` is a placeholder; the tree
-      predates `collection.html`, `items/jewelry/orologiul-apelor.html`).
 
 ## Backend Dreams (when the journey allows)
 
