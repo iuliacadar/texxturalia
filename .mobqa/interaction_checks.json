@@ -1,0 +1,132 @@
+[
+ {
+  "check": "items/jewelry/orologiul-apelor.html hamburger opens nav",
+  "result": "PASS",
+  "detail": "visible-after-click|display=flex (btn=button:mobile-menu-toggle)"
+ },
+ {
+  "check": "items/jewelry/orologiul-apelor.html no clipped interactive elements outside scrollers",
+  "result": "PASS",
+  "detail": "[]"
+ },
+ {
+  "check": "items/jewelry/orologiul-apelor.html gallery thumbs swipeable",
+  "result": "PASS",
+  "detail": "strip 351>1464px"
+ },
+ {
+  "check": "items/jewelry/orologiul-apelor.html thumb click swaps main image",
+  "result": "PASS",
+  "detail": "orologiul-01.jpg -> orologiul-03.jpg"
+ },
+ {
+  "check": "ro/items/jewelry/orologiul-apelor.html hamburger opens nav",
+  "result": "PASS",
+  "detail": "visible-after-click|display=flex (btn=button:mobile-menu-toggle)"
+ },
+ {
+  "check": "ro/items/jewelry/orologiul-apelor.html no clipped interactive elements outside scrollers",
+  "result": "PASS",
+  "detail": "[]"
+ },
+ {
+  "check": "ro/items/jewelry/orologiul-apelor.html gallery thumbs swipeable",
+  "result": "PASS",
+  "detail": "strip 351>1464px"
+ },
+ {
+  "check": "ro/items/jewelry/orologiul-apelor.html thumb click swaps main image",
+  "result": "PASS",
+  "detail": "orologiul-01.jpg -> orologiul-03.jpg"
+ },
+ {
+  "check": "index.html hamburger opens nav",
+  "result": "PASS",
+  "detail": "visible-after-click|display=flex (btn=button:mobile-menu-toggle)"
+ },
+ {
+  "check": "index.html no clipped interactive elements outside scrollers",
+  "result": "PASS",
+  "detail": "[]"
+ },
+ {
+  "check": "jewelry.html hamburger opens nav",
+  "result": "PASS",
+  "detail": "visible-after-click|display=flex (btn=button:mobile-menu-toggle)"
+ },
+ {
+  "check": "jewelry.html no clipped interactive elements outside scrollers",
+  "result": "PASS",
+  "detail": "[]"
+ },
+ {
+  "check": "collection.html hamburger opens nav",
+  "result": "PASS",
+  "detail": "visible-after-click|display=flex (btn=button:mobile-menu-toggle)"
+ },
+ {
+  "check": "collection.html no clipped interactive elements outside scrollers",
+  "result": "PASS",
+  "detail": "[]"
+ },
+ {
+  "check": "contact.html hamburger opens nav",
+  "result": "PASS",
+  "detail": "visible-after-click|display=flex (btn=button:mobile-menu-toggle)"
+ },
+ {
+  "check": "contact.html no clipped interactive elements outside scrollers",
+  "result": "PASS",
+  "detail": "[]"
+ },
+ {
+  "check": "decor.html hamburger opens nav",
+  "result": "PASS",
+  "detail": "visible-after-click|display=flex (btn=button:mobile-menu-toggle)"
+ },
+ {
+  "check": "decor.html no clipped interactive elements outside scrollers",
+  "result": "PASS",
+  "detail": "[]"
+ },
+ {
+  "check": "guests.html hamburger opens nav",
+  "result": "PASS",
+  "detail": "visible-after-click|display=flex (btn=button:mobile-menu-toggle)"
+ },
+ {
+  "check": "guests.html no clipped interactive elements outside scrollers",
+  "result": "PASS",
+  "detail": "[]"
+ },
+ {
+  "check": "manifesto.html hamburger opens nav",
+  "result": "PASS",
+  "detail": "visible-after-click|display=flex (btn=button:mobile-menu-toggle)"
+ },
+ {
+  "check": "manifesto.html no clipped interactive elements outside scrollers",
+  "result": "PASS",
+  "detail": "[]"
+ },
+ {
+  "check": "textiles.html hamburger opens nav",
+  "result": "PASS",
+  "detail": "visible-after-click|display=flex (btn=button:mobile-menu-toggle)"
+ },
+ {
+  "check": "textiles.html no clipped interactive elements outside scrollers",
+  "result": "PASS",
+  "detail": "[]"
+ },
+ {
+  "check": "404.html hamburger exists",
+  "result": "FAIL",
+  "detail": "no toggle button found"
+ },
+ {
+  "check": "404.html no clipped interactive elements outside scrollers",
+  "result": "PASS",
+  "detail": "[]"
+ }
+]

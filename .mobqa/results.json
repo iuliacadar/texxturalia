@@ -1,0 +1,360 @@
+[
+ {
+  "page": "404.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "collection.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "contact.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "decor.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "guests.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "index.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "items/jewelry/metal-script-01.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "items/jewelry/metal-script-02.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "items/jewelry/orologiul-apelor.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": [
+   "BUTTON.gallery-thumb L388 R472",
+   "IMG. L389 R471",
+   "BUTTON.gallery-thumb L480 R564",
+   "IMG. L481 R563",
+   "BUTTON.gallery-thumb L572 R656",
+   "IMG. L573 R655",
+   "BUTTON.gallery-thumb L664 R748",
+   "IMG. L665 R747"
+  ]
+ },
+ {
+  "page": "jewelry.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "manifesto.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/collection.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/contact.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/decor.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/guests.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/index.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/items/jewelry/metal-script-01.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/items/jewelry/metal-script-02.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/items/jewelry/orologiul-apelor.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": [
+   "BUTTON.gallery-thumb L388 R472",
+   "IMG. L389 R471",
+   "BUTTON.gallery-thumb L480 R564",
+   "IMG. L481 R563",
+   "BUTTON.gallery-thumb L572 R656",
+   "IMG. L573 R655",
+   "BUTTON.gallery-thumb L664 R748",
+   "IMG. L665 R747"
+  ]
+ },
+ {
+  "page": "ro/jewelry.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/manifesto.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/textiles.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "textiles.html",
+  "vw": 390,
+  "docW": 390,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "404.html",
+  "vw": 768,
+  "docW": 768,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "collection.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "contact.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "decor.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "guests.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "index.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "items/jewelry/metal-script-01.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "items/jewelry/metal-script-02.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "items/jewelry/orologiul-apelor.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": [
+   "BUTTON.gallery-thumb L774 R858",
+   "IMG. L775 R857",
+   "BUTTON.gallery-thumb L866 R950",
+   "IMG. L867 R949",
+   "BUTTON.gallery-thumb L958 R1042",
+   "IMG. L959 R1041",
+   "BUTTON.gallery-thumb L1050 R1134",
+   "IMG. L1051 R1133"
+  ]
+ },
+ {
+  "page": "jewelry.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "manifesto.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/collection.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/contact.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/decor.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/guests.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/index.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/items/jewelry/metal-script-01.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/items/jewelry/metal-script-02.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/items/jewelry/orologiul-apelor.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": [
+   "BUTTON.gallery-thumb L774 R858",
+   "IMG. L775 R857",
+   "BUTTON.gallery-thumb L866 R950",
+   "IMG. L867 R949",
+   "BUTTON.gallery-thumb L958 R1042",
+   "IMG. L959 R1041",
+   "BUTTON.gallery-thumb L1050 R1134",
+   "IMG. L1051 R1133"
+  ]
+ },
+ {
+  "page": "ro/jewelry.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/manifesto.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "ro/textiles.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ },
+ {
+  "page": "textiles.html",
+  "vw": 768,
+  "docW": 753,
+  "hscroll": false,
+  "offenders": []
+ }
+]

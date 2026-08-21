@@ -1109,6 +1109,20 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
     gap: 20px;
   }
 
+  /* Vitrina: grila asimetrică se stivuiește pe o singură coloană.
+     fr-urile desktopului rezolvă contra min-content al imaginilor și
+     împing a doua coloană în afara viewportului; minmax(0,1fr) + offseturi zero. */
+  .exhibit-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 60px;
+  }
+
+  .exhibit-grid .exhibit-item:nth-child(even),
+  .exhibit-grid .exhibit-item:nth-child(2),
+  .exhibit-grid .exhibit-item:nth-child(4) {
+    margin-top: 0;
+  }
+
   .product-detail-container {
     grid-template-columns: minmax(0, 1fr);
     flex-direction: column;
