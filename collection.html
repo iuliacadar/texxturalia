@@ -1,0 +1,91 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Collection | The Texxturalia Atelier</title>
+    <meta
+      name="description"
+      content="The full Texxturalia Collection — every unique piece: atavic envelopes, sacral scripts, telluric dialect(ic)s, and guest dialogues. Handmade, one-of-one, out loud."
+    />
+    <link rel="icon" type="image/x-icon" href="images/branding/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@100;200;300;400&display=swap"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html">
+        <div class="logo">T E X X T U R A L I A</div>
+      </a>
+      <button class="mobile-menu-toggle" aria-label="Open Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="textiles.html">Atavic Envelopes</a></li>
+        <li><a href="jewelry.html">Sacral Scripts</a></li>
+        <li><a href="decor.html">Telluric Dialect(ic)s</a></li>
+        <li><a href="guests.html">InterTexxturalia</a></li>
+        <li><a href="manifesto.html">Gnosis</a></li>
+        <li><a href="collection.html">The Collection</a></li>
+        <li class="lang-select"><a href="ro/collection.html">RO</a></li>
+      </ul>
+    </nav>
+
+    <main class="collection-container">
+      <header class="collection-header">
+        <span class="eyebrow">The Archive</span>
+        <h1 class="reveal">The Collection</h1>
+        <div class="header-divider reveal"></div>
+        <p class="header-description reveal">
+          Every piece the atelier has made, out loud. A slow catalogue of
+          gestures — each one unique, woven by hand, bound to no template.
+        </p>
+      </header>
+
+      <div class="collection-filters reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="textiles">Atavic Envelopes</button>
+        <button class="filter-btn" data-filter="jewelry">Sacral Scripts</button>
+        <button class="filter-btn" data-filter="decor">Telluric Dialect(ic)s</button>
+        <button class="filter-btn" data-filter="guests">InterTexxturalia</button>
+      </div>
+
+      <section class="collection-grid" id="collection-grid">
+        <!-- Jewelry -->
+        <div class="exhibit-item reveal" data-category="jewelry">
+          <a href="items/jewelry/orologiul-apelor.html">
+            <div class="image-wrapper">
+              <img
+                src="images/products/jewelry/orologiul-01.jpg"
+                alt="The Clock of Waters — turquoise cabochons in copper wire nets"
+              />
+            </div>
+            <div class="item-info">
+              <span class="item-number">01</span>
+              <h2>The Clock of Waters</h2>
+            </div>
+          </a>
+        </div>
+        <!-- /Jewelry -->
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <p>&copy; 2024 TEXXTURALIA. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="contact.html">Texxt Us</a>
+          <a href="https://www.instagram.com/t_e_x_x_t_u_r_a_l_i_a/" target="_blank">Instagram</a>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

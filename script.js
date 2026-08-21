@@ -50,8 +50,33 @@ const initReveal = () => {
   elements.forEach((el) => observer.observe(el));
 };
 
-// --- 3. PORNIREA MECANISMULUI (Initialization) ---
+// --- 3. BIBLIOTECA COLECȚIEI (Collection Filter) ---
+const initCollectionFilter = () => {
+  const buttons = document.querySelectorAll(".filter-btn");
+  const grid = document.getElementById("collection-grid");
+  if (!buttons.length || !grid) return;
+
+  const applyFilter = (filter) => {
+    const items = grid.querySelectorAll(".exhibit-item");
+    items.forEach((item) => {
+      const cat = item.dataset.category || "all";
+      const show = filter === "all" || cat === filter;
+      item.style.display = show ? "" : "none";
+    });
+  };
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      applyFilter(btn.dataset.filter);
+    });
+  });
+};
+
+// --- 4. PORNIREA MECANISMULUI (Initialization) ---
 document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initReveal();
+  initCollectionFilter();
 });

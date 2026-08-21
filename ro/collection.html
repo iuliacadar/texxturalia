@@ -1,0 +1,91 @@
+﻿<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colecția | Atelierul Texxturalia</title>
+    <meta
+      name="description"
+      content="Colecția Texxturalia — fiecare piesă unicită: învelișuri atavice, scriituri sacre, dialectici telurice și dialoghe invitate. Feceată manual, unicată, viva."
+    />
+    <link rel="icon" type="image/x-icon" href="../images/branding/favicon.ico" />
+    <link rel="stylesheet" href="../style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@100;200;300;400&display=swap"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="../index.html">
+        <div class="logo">T E X X T U R A L I A</div>
+      </a>
+      <button class="mobile-menu-toggle" aria-label="Meniu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../textiles.html">Învelișuri atavice</a></li>
+        <li><a href="../jewelry.html">Scriituri sacre</a></li>
+        <li><a href="../decor.html">Dialectici telurice</a></li>
+        <li><a href="../guests.html">InterTexxturalia</a></li>
+        <li><a href="../manifesto.html">Gnoză</a></li>
+        <li><a href="../collection.html">Colecția</a></li>
+        <li class="lang-select"><a href="../collection.html">EN</a></li>
+      </ul>
+    </nav>
+
+    <main class="collection-container">
+      <header class="collection-header">
+        <span class="eyebrow">Arhiva</span>
+        <h1 class="reveal">Colecția</h1>
+        <div class="header-divider reveal"></div>
+        <p class="header-description reveal">
+          Fiecare piesă fecare de atelier, viva. Un catalogue lent de gesturi —
+          fiecare unucă, țesut manual, non ligătu de niciun template.
+        </p>
+      </header>
+
+      <div class="collection-filters reveal">
+        <button class="filter-btn active" data-filter="all">Totale</button>
+        <button class="filter-btn" data-filter="textiles">Învelișuri atavice</button>
+        <button class="filter-btn" data-filter="jewelry">Scriituri sacre</button>
+        <button class="filter-btn" data-filter="decor">Dialectici telurice</button>
+        <button class="filter-btn" data-filter="guests">InterTexxturalia</button>
+      </div>
+
+      <section class="collection-grid" id="collection-grid">
+        <!-- Bijuterie -->
+        <div class="exhibit-item reveal" data-category="jewelry">
+          <a href="items/jewelry/orologiul-apelor.html">
+            <div class="image-wrapper">
+              <img
+                src="../images/products/jewelry/orologiul-01.jpg"
+                alt="Orologiul apelor — caboțe de turcoaz în rețeau de cupru"
+              />
+            </div>
+            <div class="item-info">
+              <span class="item-number">01</span>
+              <h2>Orologiul apelor</h2>
+            </div>
+          </a>
+        </div>
+        <!-- /Bijuterie -->
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <p>&copy; 2024 TEXXTURALIA. Toate drepturile rezervate.</p>
+        <div class="footer-links">
+          <a href="../contact.html">Corespondență</a>
+          <a href="https://www.instagram.com/t_e_x_x_t_u_r_a_l_i_a/" target="_blank">Instagram</a>
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+</html>
