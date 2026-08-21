@@ -634,7 +634,9 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 
 .product-detail-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Două coloane egale */
+  /* minmax(0, 1fr): coloanele pot scădea sub lățimea intrinsecă a imaginii,
+     altfel coloana vizualului se umflă la 1612px și împinge textul în afara ecranului */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   max-width: 1100px;
   margin: 0 auto;
   padding: 20px 5% 60px;
@@ -660,11 +662,18 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   background-color: #dcd7cf;
   width: 100%;
   overflow: hidden;
+  /* Cadru de înălțime constantă: tot secțiunea vizuală (imagine + fir de
+     miniaturi) încape în ecran, fără scroll, cu un respiru sub ea.
+     Măsurat real: navbar ~151px + padding container 20px deasupra,
+     miniaturi 84px + gap 12px sub, + respiru ~35px ⇒ rezervăm 300px. */
+  height: calc(100vh - 300px);
+  min-height: 420px; /* pe ecrane foarte mici, nu colapsăm imaginea */
 }
 
 .gallery-main img {
   width: 100%;
-  height: auto;
+  max-width: 100%;
+  height: 100%;
   display: block;
   object-fit: contain;
 }
@@ -1111,8 +1120,18 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
     margin-bottom: 30px;
   }
 
+  /* Pe mobil renunțăm la cadrul de înălțime viewport (fix desktop):
+     imaginea revine la proporția ei naturală, iar secțiunile curg
+     una sub alta — galerie (imagine + miniaturi), apoi text. */
+  .gallery-main {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+
   .product-info {
     padding-left: 0;
+    padding-top: 0;
   }
 
   /* 6. CONTACT & FOOTER */
