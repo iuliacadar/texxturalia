@@ -635,9 +635,8 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 .product-detail-container {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Două coloane egale */
-  min-height: 100vh;
-  padding: 0 5% 100px;
-  gap: 80px;
+  padding: 60px 5% 80px;
+  gap: 60px;
   align-items: start;
 }
 
@@ -647,17 +646,17 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 }
 
 /* Galeria de produs — vizionariu principal + fir de piculi imaginuri.
-   Firul de piculi imagini este un scroller horizontal (swipe) și poată
+   Firul de piculi imagini este un scroller orizontal (swipe) și poată
    tene până a 20+ imagini, derulându-se lateral. */
 .gallery {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .gallery-main {
   background-color: #dcd7cf; /* Nuanța noastră de Azot */
-  padding: 40px;
+  padding: 30px;
 }
 
 .gallery-main img {
@@ -665,9 +664,12 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   height: auto;
   display: block;
   object-fit: contain;
+  max-height: 72vh; /* Imaginea principală rămâne pe ecran, nu mai trage pagina în jos */
 }
 
-/* Firul de piculi imagini — scroller lateral, co swipe */
+/* Firul de piculi imagini — scroller lateral, co swipe.
+   Lățimea firului este limitată (max ~5 imagini vizibile), restul
+   se derulează lateral prin swipe sau drag. */
 .gallery-thumbs {
   display: flex;
   overflow-x: auto;
@@ -675,12 +677,13 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   scroll-snap-type: x proximity;
   padding-bottom: 4px;
   -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
 
 .gallery-thumb {
   flex: 0 0 auto;
-  width: 72px;
-  height: 72px;
+  width: 90px;
+  height: 90px;
   padding: 0;
   border: 1px solid #e6e1d8;
   background: #f2f0eb;
@@ -713,7 +716,7 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 }
 
 .product-info {
-  padding-top: 100px;
+  padding-top: 30px;
   max-width: 500px;
 }
 
