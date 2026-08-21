@@ -29,8 +29,9 @@ and beautiful — but it does not scale to a hundred pieces. The long answer to
 
 ## Product Pages
 
-- [ ] **Photo gallery** — (DONE) main viewer + thumbnail strip, swaps on
-      click. When more photos exist, add them as thumbnails.
+- [x] **Photo gallery** — main viewer + swipeable thumbnail strip
+      (scrolls sideways, holds 20+ photos), click a thumbnail or use
+      Prev/Next to change the main image.
 - [ ] **Lightbox** — click the main image to view it full-screen, with
       prev/next. Optional; add when the gallery feels too small.
 

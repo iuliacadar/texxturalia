@@ -74,21 +74,64 @@ const initCollectionFilter = () => {
   });
 };
 
-// --- 4. GALERIA DE PRODUS (Thumbnail Swapper) ---
+// --- 4. GALERIA DE PRODUS (Thumbnail Swapper + Swipe) ---
 const initGallery = () => {
   const galleries = document.querySelectorAll("[data-gallery]");
   galleries.forEach((gallery) => {
     const mainImg = gallery.querySelector("#gallery-main-img");
     const thumbs = gallery.querySelectorAll(".gallery-thumb");
+    const strip = gallery.querySelector(".gallery-thumbs");
     if (!mainImg || !thumbs.length) return;
 
+    const setMain = (thumb) => {
+      mainImg.src = thumb.dataset.src;
+      thumbs.forEach((t) => t.classList.remove("is-active"));
+      thumb.classList.add("is-active");
+    };
+
     thumbs.forEach((thumb) => {
-      thumb.addEventListener("click", () => {
-        mainImg.src = thumb.dataset.src;
-        thumbs.forEach((t) => t.classList.remove("is-active"));
-        thumb.classList.add("is-active");
-      });
+      thumb.addEventListener("click", () => setMain(thumb));
     });
+
+    // Prev / Next navegare
+    const prev = gallery.querySelector(".gallery-prev");
+    const next = gallery.querySelector(".gallery-next");
+    if (prev && next) {
+      const current = () =>
+        Array.from(thumbs).findIndex((t) =>
+          t.classList.contains("is-active"),
+        );
+      prev.addEventListener("click", () => {
+        const i = current();
+        if (i > 0) setMain(thumbs[i - 1]);
+      });
+      next.addEventListener("click", () => {
+        const i = current();
+        if (i < thumbs.length - 1) setMain(thumbs[i + 1]);
+      });
+    }
+
+    // Swipe cu mâusa pe desktop (drag-horizontal pe firul de piculi imagini)
+    if (strip) {
+      let isDragging = false;
+      let startX = 0;
+      let startScroll = 0;
+      strip.addEventListener("pointerdown", (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startScroll = strip.scrollLeft;
+      });
+      strip.addEventListener("pointermove", (e) => {
+        if (!isDragging) return;
+        strip.scrollLeft = startScroll + (startX - e.clientX);
+      });
+      strip.addEventListener("pointerup", () => {
+        isDragging = false;
+      });
+      strip.addEventListener("pointerleave", () => {
+        isDragging = false;
+      });
+    }
   });
 };
 
