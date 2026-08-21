@@ -80,7 +80,6 @@ const initGallery = () => {
   galleries.forEach((gallery) => {
     const mainImg = gallery.querySelector("#gallery-main-img");
     const thumbs = gallery.querySelectorAll(".gallery-thumb");
-    const track = gallery.querySelector(".gallery-track");
     const viewport = gallery.querySelector(".gallery-thumbs");
     if (!mainImg || !thumbs.length) return;
 
@@ -90,41 +89,37 @@ const initGallery = () => {
       thumb.classList.add("is-active");
     };
 
-    thumbs.forEach((thumb) => {
-      thumb.addEventListener("click", () => setMain(thumb));
-    });
-
-    // Slider: swipe / drag cu mouse pe track.
-    if (track && viewport) {
-      let currentX = 0; // posiția curentă a firului (pixel, înmojare)
-
-      const maxSlide = () => {
-        const trackW = track.scrollWidth;
-        const viewW = viewport.clientWidth;
-        return Math.max(0, trackW - viewW);
-      };
-      const clamp = (x) => Math.max(0, Math.min(x, maxSlide()));
-
-      // Drag cu mâusa / touch
+    // Slider: swipe / drag cu mâusa pe scrollerul nativ.
+    if (viewport) {
       let isDragging = false;
       let startX = 0;
-      let baseX = 0;
+      let startScroll = 0;
+      let moved = 0;
 
       viewport.addEventListener("pointerdown", (e) => {
         isDragging = true;
+        moved = 0;
         startX = e.clientX;
-        baseX = currentX;
+        startScroll = viewport.scrollLeft;
       });
       viewport.addEventListener("pointermove", (e) => {
         if (!isDragging) return;
-        currentX = clamp(baseX + (startX - e.clientX));
-        track.style.transform = `translateX(-${currentX}px)`;
+        const dx = startX - e.clientX;
+        moved += Math.abs(dx);
+        viewport.scrollLeft = startScroll + dx;
       });
-      viewport.addEventListener("pointerup", () => {
+      const endDrag = () => {
         isDragging = false;
-      });
-      viewport.addEventListener("pointerleave", () => {
-        isDragging = false;
+      };
+      viewport.addEventListener("pointerup", endDrag);
+      viewport.addEventListener("pointerleave", endDrag);
+
+      // Click pe o piculă — selectează, dar nu după o drag reală.
+      thumbs.forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+          if (moved > 10) return; // a fost o drag, nu un click
+          setMain(thumb);
+        });
       });
     }
   });

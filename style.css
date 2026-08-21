@@ -635,15 +635,14 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 .product-detail-container {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Două coloane egale */
-  min-height: 100vh;
-  padding: 0 5% 100px;
-  gap: 80px;
+  padding: 30px 5% 60px;
+  gap: 60px;
   align-items: start;
 }
 
 .product-visual {
   position: sticky; /* Imaginea rămâne pe loc în timp ce dăm scroll la text */
-  top: 100px;
+  top: 20px;
 }
 
 /* Galeria de produs — vizionariu principal + fir de piculi imaginuri.
@@ -661,31 +660,41 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 }
 
 .gallery-main img {
-  width: 100%;
+  max-width: 100%;
+  max-height: calc(100vh - 300px); /* încape întreaga fotografie + piculi imagini pe ecran, fără crop */
+  width: auto;
   height: auto;
   display: block;
+  margin: 0 auto;
   object-fit: contain;
 }
 
-/* Firul de piculi imagini — slider: un vizionariu fix (viewport) + un fir
-   (track) co draggere înleacă. Poată tene până a 20+ imagini. */
+/* Firul de piculi imagini — un scroller orizontal cu 5 piculi vizibile,
+   restul se derulează prin swipe / drag. Scrollbar-ul este ascuns. */
 .gallery-thumbs {
   position: relative;
-  overflow: hidden; /* Vizionariu fix — nu se folosește scrollbar nativ */
-  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 452px; /* ~5 piculi vizibile (84px + gap 8px) */
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge vechi */
+  padding-bottom: 2px;
+}
+
+.gallery-thumbs::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .gallery-track {
   display: flex;
   gap: 8px;
-  transition: transform 0.35s ease;
-  will-change: transform;
 }
 
 .gallery-thumb {
   flex: 0 0 auto;
-  width: 72px;
-  height: 72px;
+  width: 84px;
+  height: 84px;
   padding: 0;
   border: 1px solid #e6e1d8;
   background: #f2f0eb;
