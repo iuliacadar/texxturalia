@@ -437,7 +437,7 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 }
 
 .collection-header {
-  margin-bottom: 80px;
+  margin: 0 auto 80px;
   max-width: 560px;
   text-align: center;
 }
@@ -617,8 +617,39 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 .main-image-wrapper {
   /* background-color: #efeeea; */
   background-color: #dcd7cf; /* Nuanța noastră de Azot */
-  min-height: 700px; /* Înălțimea minimă dorită */
-  padding: 50px;
+  padding: 40px;
+}
+
+.main-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Detaliu de imagine — grila două imaginuri sub imaginele principală */
+.detail-image-wrapper {
+  background-color: #dcd7cf;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.detail-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Numele romănesc subtitlu (Orologiul apelor sub The Clock of Waters) */
+.product-ro {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-style: italic;
+  color: #999;
+  display: block;
+  margin-bottom: 30px;
 }
 
 .product-info {
