@@ -701,26 +701,6 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   border-color: #2c2c2c;
 }
 
-/* Sage petă: picări înapoi / înăinte în firul de piculi imagini */
-.gallery-nav {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 4px;
-}
-
-.gallery-prev,
-.gallery-next {
-  background: transparent;
-  border: 1px solid #e6e1d8;
-  color: #2c2c2c;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 6px 14px;
-  cursor: pointer;
-}
-
 /* Numele romănesc subtitlu (Orologiul apelor sub The Clock of Waters) */
 .product-ro {
   font-family: "Cormorant Garamond", serif;

@@ -89,27 +89,9 @@ const initGallery = () => {
       thumb.classList.add("is-active");
     };
 
-    thumbs.forEach((thumb) => {
+thumbs.forEach((thumb) => {
       thumb.addEventListener("click", () => setMain(thumb));
     });
-
-    // Prev / Next navegare
-    const prev = gallery.querySelector(".gallery-prev");
-    const next = gallery.querySelector(".gallery-next");
-    if (prev && next) {
-      const current = () =>
-        Array.from(thumbs).findIndex((t) =>
-          t.classList.contains("is-active"),
-        );
-      prev.addEventListener("click", () => {
-        const i = current();
-        if (i > 0) setMain(thumbs[i - 1]);
-      });
-      next.addEventListener("click", () => {
-        const i = current();
-        if (i < thumbs.length - 1) setMain(thumbs[i + 1]);
-      });
-    }
 
     // Swipe cu mâusa pe desktop (drag-horizontal pe firul de piculi imagini)
     if (strip) {
