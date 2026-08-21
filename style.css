@@ -1110,7 +1110,7 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   }
 
   .product-detail-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     flex-direction: column;
     padding: 20px 5%;
   }
@@ -1118,6 +1118,8 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   .product-visual {
     position: static; /* Nu mai rămâne fix, curge natural */
     margin-bottom: 30px;
+    max-width: 100%;
+    min-width: 0;
   }
 
   /* Pe mobil renunțăm la cadrul de înălțime viewport (fix desktop):
@@ -1127,6 +1129,18 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
     height: auto;
     min-height: 0;
     aspect-ratio: 4 / 5;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .gallery-main img {
+    max-width: 100%;
+  }
+
+  .gallery-thumbs,
+  .gallery-track {
+    max-width: 100%;
+    min-width: 0;
   }
 
   .product-info {
