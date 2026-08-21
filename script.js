@@ -74,13 +74,14 @@ const initCollectionFilter = () => {
   });
 };
 
-// --- 4. GALERIA DE PRODUS (Thumbnail Swapper + Swipe) ---
+// --- 4. GALERIA DE PRODUS (Thumbnail Swapper + Slider) ---
 const initGallery = () => {
   const galleries = document.querySelectorAll("[data-gallery]");
   galleries.forEach((gallery) => {
     const mainImg = gallery.querySelector("#gallery-main-img");
     const thumbs = gallery.querySelectorAll(".gallery-thumb");
-    const strip = gallery.querySelector(".gallery-thumbs");
+    const track = gallery.querySelector(".gallery-track");
+    const viewport = gallery.querySelector(".gallery-thumbs");
     if (!mainImg || !thumbs.length) return;
 
     const setMain = (thumb) => {
@@ -89,28 +90,40 @@ const initGallery = () => {
       thumb.classList.add("is-active");
     };
 
-thumbs.forEach((thumb) => {
+    thumbs.forEach((thumb) => {
       thumb.addEventListener("click", () => setMain(thumb));
     });
 
-    // Swipe cu mâusa pe desktop (drag-horizontal pe firul de piculi imagini)
-    if (strip) {
+    // Slider: swipe / drag cu mouse pe track.
+    if (track && viewport) {
+      let currentX = 0; // posiția curentă a firului (pixel, înmojare)
+
+      const maxSlide = () => {
+        const trackW = track.scrollWidth;
+        const viewW = viewport.clientWidth;
+        return Math.max(0, trackW - viewW);
+      };
+      const clamp = (x) => Math.max(0, Math.min(x, maxSlide()));
+
+      // Drag cu mâusa / touch
       let isDragging = false;
       let startX = 0;
-      let startScroll = 0;
-      strip.addEventListener("pointerdown", (e) => {
+      let baseX = 0;
+
+      viewport.addEventListener("pointerdown", (e) => {
         isDragging = true;
         startX = e.clientX;
-        startScroll = strip.scrollLeft;
+        baseX = currentX;
       });
-      strip.addEventListener("pointermove", (e) => {
+      viewport.addEventListener("pointermove", (e) => {
         if (!isDragging) return;
-        strip.scrollLeft = startScroll + (startX - e.clientX);
+        currentX = clamp(baseX + (startX - e.clientX));
+        track.style.transform = `translateX(-${currentX}px)`;
       });
-      strip.addEventListener("pointerup", () => {
+      viewport.addEventListener("pointerup", () => {
         isDragging = false;
       });
-      strip.addEventListener("pointerleave", () => {
+      viewport.addEventListener("pointerleave", () => {
         isDragging = false;
       });
     }

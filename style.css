@@ -635,8 +635,9 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 .product-detail-container {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Două coloane egale */
-  padding: 60px 5% 80px;
-  gap: 60px;
+  min-height: 100vh;
+  padding: 0 5% 100px;
+  gap: 80px;
   align-items: start;
 }
 
@@ -664,26 +665,27 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   height: auto;
   display: block;
   object-fit: contain;
-  max-height: 72vh; /* Imaginea principală rămâne pe ecran, nu mai trage pagina în jos */
 }
 
-/* Firul de piculi imagini — scroller lateral, co swipe.
-   Lățimea firului este limitată (max ~5 imagini vizibile), restul
-   se derulează lateral prin swipe sau drag. */
+/* Firul de piculi imagini — slider: un vizionariu fix (viewport) + un fir
+   (track) co draggere înleacă. Poată tene până a 20+ imagini. */
 .gallery-thumbs {
-  display: flex;
-  overflow-x: auto;
-  gap: 8px;
-  scroll-snap-type: x proximity;
-  padding-bottom: 4px;
-  -webkit-overflow-scrolling: touch;
+  position: relative;
+  overflow: hidden; /* Vizionariu fix — nu se folosește scrollbar nativ */
   max-width: 100%;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 8px;
+  transition: transform 0.35s ease;
+  will-change: transform;
 }
 
 .gallery-thumb {
   flex: 0 0 auto;
-  width: 90px;
-  height: 90px;
+  width: 72px;
+  height: 72px;
   padding: 0;
   border: 1px solid #e6e1d8;
   background: #f2f0eb;
