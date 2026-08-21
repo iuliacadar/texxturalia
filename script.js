@@ -74,9 +74,28 @@ const initCollectionFilter = () => {
   });
 };
 
-// --- 4. PORNIREA MECANISMULUI (Initialization) ---
+// --- 4. GALERIA DE PRODUS (Thumbnail Swapper) ---
+const initGallery = () => {
+  const galleries = document.querySelectorAll("[data-gallery]");
+  galleries.forEach((gallery) => {
+    const mainImg = gallery.querySelector("#gallery-main-img");
+    const thumbs = gallery.querySelectorAll(".gallery-thumb");
+    if (!mainImg || !thumbs.length) return;
+
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        mainImg.src = thumb.dataset.src;
+        thumbs.forEach((t) => t.classList.remove("is-active"));
+        thumb.classList.add("is-active");
+      });
+    });
+  });
+};
+
+// --- 5. PORNIREA MECANISMULUI (Initialization) ---
 document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initReveal();
   initCollectionFilter();
+  initGallery();
 });

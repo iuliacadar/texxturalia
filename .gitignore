@@ -1,0 +1,10 @@
+# OS clutter
+.DS_Store
+Thumbs.db
+
+# Editor junk
+*.code-workspace
+
+# Temp
+*.tmp
+*~

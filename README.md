@@ -13,19 +13,21 @@ The codebase operates on a decoupled multi-page template structure, isolating sp
 ```text
 texxturalia/
 ├── index.html            # The primary gallery gate & central storefront experience
-├── textiles.html         # Specialized portal tracking textile arts and fabric matrices
-├── jewelry.html          # Custom artisanal jewelry showcases & inventory modules
-├── decor.html            # High-end spaces and structural interior design nodes
+├── textiles.html         # Curated window: textile arts and fabric matrices
+├── jewelry.html          # Curated window: artisanal jewelry showcases
+├── decor.html            # Curated window: interior design nodes
+├── guests.html           # Curated window: guest designers dialogue
+├── collection.html       # The full archive — every piece, filterable by domain
 ├── manifesto.html        # The core conceptual philosophy & brand vision archive
 ├── contact.html          # Secure communications relay and user interface forms
-├── guests.html           # Guestbook interaction ledger and registry protocols
 ├── 404.html              # Custom system routing fault override screen
-├── style.css             # Unified architecture style overridden specification sheets
-├── script.js             # Interaction sensory logic loops and interface animations
-├── .vscode/              # Local client environment configurations
+├── BACKLOG.md            # Future ideas: data-driven automation, gallery, payments
+├── style.css             # Unified architecture style specification sheets
+├── script.js             # Interaction logic: menu, reveal, filters, gallery
+├── .gitignore            # Repository ignore rules
 ├── ro/                   # Localized Romanian system translation folders
 ├── images/branding/      # Core SVG/Vector asset layouts for identity node deployment
-└── items/jewelry/        # High-resolution metadata item inventory storage matrix
+└── images/products/      # Product photography, organised by domain
 ```
 
 ---
@@ -44,7 +46,7 @@ To spin up this artisanal matrix locally and audit layout metrics across system 
 
 1. **Clone the repository instance securely from the server hub:**
    ```bash
-   git clone https://github.com
+   git clone https://github.com/iuliacadar/texxturalia.git
    ```
 2. **Navigate directly into the project base root layout directory:**
    ```bash

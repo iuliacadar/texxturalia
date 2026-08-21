@@ -398,6 +398,8 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 .image-placeholder.h-600 { height: 600px; }
 .image-placeholder.h-550 { height: 550px; }
 .image-placeholder.h-450 { height: 450px; }
+.image-placeholder.h-520 { height: 520px; }
+.image-placeholder.h-480 { height: 480px; }
 
 .exhibit-item:hover .image-wrapper {
   transform: scale(0.98);
@@ -516,6 +518,21 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   align-items: start;
 }
 
+/* Imaginilele în grila — fotografia se afișează întregă, nu se ştirează.
+   Ratio fixă (4:5) + contain = totul firul de fotografia este vizibil. */
+.collection-grid .image-wrapper {
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  overflow: hidden;
+}
+
+.collection-grid .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 /* --- 7. THE CREED (Eseu Tipografic / Pagina de Text) --- */
 
 .manifesto-container {
@@ -629,31 +646,49 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   top: 100px;
 }
 
-.main-image-wrapper {
-  /* background-color: #efeeea; */
+/* Galeria de produs — un vizionariu principal + fir de piculi imagini */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gallery-main {
   background-color: #dcd7cf; /* Nuanța noastră de Azot */
   padding: 40px;
 }
 
-.main-image-wrapper img {
+.gallery-main img {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
-/* Detaliu de imagine — grila două imaginuri sub imaginele principală */
-.detail-image-wrapper {
-  background-color: #dcd7cf;
-  margin-top: 20px;
+.gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.gallery-thumb {
   padding: 0;
+  border: 1px solid #e6e1d8;
+  background: #f2f0eb;
+  cursor: pointer;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
 }
 
-.detail-image-wrapper img {
+.gallery-thumb img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.gallery-thumb.is-active {
+  border-color: #2c2c2c;
 }
 
 /* Numele romănesc subtitlu (Orologiul apelor sub The Clock of Waters) */
