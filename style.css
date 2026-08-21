@@ -651,37 +651,36 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 .gallery {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-width: 452px;
+  gap: 12px;
 }
 
 .gallery-main {
   background-color: #dcd7cf;
   width: 100%;
-  aspect-ratio: 4 / 5;
   overflow: hidden;
 }
 
 .gallery-main img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
   object-fit: cover;
+  max-height: calc(100vh - 300px);
 }
 
 .gallery-thumbs {
   position: relative;
+  width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  max-width: 452px; /* ~5 piculi vizibile (84px + gap 8px) */
   scroll-snap-type: x mandatory;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge vechi */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   padding-bottom: 2px;
 }
 
 .gallery-thumbs::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
 }
 
 .gallery-track {
