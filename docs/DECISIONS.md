@@ -58,3 +58,35 @@ actually needed.
 Better a live simple site with 2 finished products than a perfect site never
 finished. MoSCoW prioritization; subcategories postponed until ~20 items per
 domain.
+
+## semantic-elements-div-for-teaser-cards
+
+Teaser/link cards on portal and exhibit grid pages render as `<div>` elements,
+not `<article>` or `<section>`.
+
+**What was decided.** Each card in the grid is a navigation unit — a teaser
+linking to a deeper page. `div` is the correct semantic choice because the card
+is not, by itself, a complete composition. `article` is reserved for genuinely
+self-contained compositions such as the manifesto essay page and individual
+product detail pages.
+
+**Why.** An `article` element implies the enclosed content is a self-contained
+composition that could stand alone (syndicated, bookmarked, its own entry point).
+A teaser card is a pointer, not a composition. Marking it as `article` would
+mislead assistive technology and anyone reading the HTML for structure.
+
+**Alternatives considered.**
+
+- **article** — defensible in isolation, but would require re-evaluation if the
+  project later adds full product data (price, materials, dimensions) directly
+  inside grid cards. At that point each card could arguably become a
+  self-contained composition and `article` would be appropriate. Until then,
+  `div` is the honest choice.
+- **section** — not appropriate. These cards are not thematic groupings of
+  content; they are individual navigation units. `section` would imply a group
+  heading and internal thematic structure that the grid cards don't have.
+
+**Consequences.** If the project later upgrades teaser cards to `article`
+(e.g. when full product data lands in the grid), it is a find-and-replace across
+the 5 files that render grid cards. There is no CSS impact — the existing
+selector rules target class names, not element types.

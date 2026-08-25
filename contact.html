@@ -48,7 +48,21 @@
         </p>
       </header>
 
-      <!-- Two-column contact layout: left = contact methods, right = working process note -->
+      <!--
+        TWO-COLUMN CONTACT LAYOUT (why .contact-grid has two columns):
+        The two <div>s below — .contact-text and .contact-note — sit side
+        by side on desktop (CSS Grid, two columns) rather than one being
+        squeezed above/below the other. They carry two DIFFERENT kinds of
+        information that a visitor might want independently: the left
+        column is "how do I reach you" (email, Instagram — practical
+        contact methods), the right column is "what happens if I do" (the
+        working process note — sets expectations before anyone writes in).
+        Placing them as parallel columns, rather than one long stacked
+        list, treats them as two separate streams a visitor can scan
+        independently, instead of implying one is a continuation of the
+        other. On narrow (mobile) screens the grid collapses to a single
+        column and the streams simply stack instead.
+      -->
       <div class="contact-grid">
         <!-- Left column: contact methods -->
         <div class="contact-text reveal">

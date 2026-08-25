@@ -21,6 +21,22 @@
     <main class="error-container">
       <div class="error-content reveal">
         <h1 class="error-title">404</h1>
+        <!--
+          BILINGUAL MESSAGE HIERARCHY (why EN sits above RO, and looks
+          more prominent):
+          The English message (.error-message-en) is styled with higher
+          opacity than the Romanian one (.error-message-ro) — see
+          style.css GROUP 12. This is a deliberate hierarchy, not an
+          oversight: the site's primary audience is English-speaking (the
+          root of the site is English, the /ro/ folder is a mirror — see
+          docs/DECISIONS.md, "Bilingual by mirroring, not i18n tooling"),
+          so the EN line carries the primary content at full clarity. The
+          dimmer RO line underneath is a nod to the project's bilingual
+          strategy: it doesn't compete with the EN message for attention,
+          but it's there, in the visitor's own language if they're
+          Romanian-speaking, inviting them into the same experience rather
+          than leaving them without any acknowledgment at all.
+        -->
         <p class="error-message-en">
           The thread has snapped. Return to the abyss.
         </p>

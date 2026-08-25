@@ -55,6 +55,54 @@
         </p>
       </header>
 
+      <!--
+        PLACEHOLDER PATTERN (intentional, NOT a broken link):
+        Guest pieces whose <a> uses href="#" are reserved slots for future
+        collaborations — their photos and pages don't exist yet.
+        When a guest piece is ready: point the link at its page under
+        items/guests/ and replace the .image-placeholder div with an <img>.
+      -->
+
+      <!--
+        WHY .item-info IS STRUCTURED DIFFERENTLY HERE:
+        On textiles.html, jewelry.html, and decor.html, .item-info holds
+        a flat pair — <span class="item-number"> then a plain <h2> title.
+        On THIS page, the title is wrapped one level deeper:
+          <span class="item-number">01</span>
+          <div>
+            <h2>Piece Title</h2>
+            <p class="artist-credit">by Artist Name</p>
+          </div>
+        The extra wrapping <div> exists because guest cards carry one more
+        fact than the other exhibit pages: WHO made the piece. The item
+        number stays a direct sibling (it's positioned independently by
+        CSS), but the title and the artist credit are grouped together in
+        their own <div> so they can be styled/stacked as one unit (title on
+        top, "by Artist Name" underneath) without disturbing the number's
+        layout. It's a small structural change driven by one extra piece
+        of content — not a different pattern, just this page's pattern
+        having one more layer of nesting.
+      -->
+
+      <!--
+        ADDING ANOTHER GUEST ARTIST — copy this whole block:
+        To add a new guest entry, duplicate one of the
+        <div class="exhibit-item reveal"> ... </div> blocks below (including
+        its wrapping <div>) and change four things inside your copy:
+          1. The href on the <a> — point it at the new guest's product page
+             under items/guests/ (or leave it "#" as a placeholder — see the
+             PLACEHOLDER PATTERN note above).
+          2. The image-placeholder's size class (medium / short / wide /
+             h-480, etc.) — pick whichever keeps the grid's rhythm, or swap
+             the whole <div class="image-placeholder ..."> for a real <img>
+             once you have a photo.
+          3. The item-number span — bump it to the next number (05, 06, ...).
+          4. The <h2>Piece Title</h2> and <p class="artist-credit">by Artist
+             Name</p> text — fill in the real piece title and the guest
+             artist's name.
+        Paste your new block anywhere inside <section class="exhibit-grid">,
+        before the closing </section> tag.
+      -->
       <section class="exhibit-grid">
         <!-- Guest 01 -->
         <div class="exhibit-item reveal">

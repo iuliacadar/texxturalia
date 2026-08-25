@@ -1,4 +1,10 @@
-﻿<!doctype html>
+﻿<!-- orologiul-apelor.html — Pagina de detaliu de produs pentru "Orologiul
+     apelor" (The Clock of Waters), un colier unicat din sârmă de cupru cu
+     douăsprezece caboșoane de turcoaz. Pagina se află la două foldere
+     distanță (items/jewelry/), de aceea fiecare link și cale de imagine
+     începe cu "../../" — asta înseamnă "urcă două foldere" (go up two
+     folders) pentru a ajunge la rădăcina site-ului. -->
+<!doctype html>
 <html lang="ro">
   <head>
     <meta charset="UTF-8" />
@@ -44,8 +50,23 @@
       </ul>
     </nav>
 
+    <!-- Structura pe două coloane (split-screen layout): .product-detail-container
+         e stilizat prin CSS să formeze două coloane alăturate — fotografiile
+         produsului în stânga (.product-visual) și povestea + specificațiile
+         în dreapta (.product-info). Privirea vizitatorului trece dintr-o
+         parte în alta pe măsură ce derulează pagina. Pe un ecran îngust
+         (mobil), CSS suprapune cele două coloane pe o singură coloană, mai
+         întâi fotografiile, apoi textul dedesubt. -->
     <main class="product-detail-container">
       <section class="product-visual reveal">
+        <!-- data-gallery marchează această cutie ca fiind "galeria foto",
+             pentru ca script.js să o poată găsi (Mecanismul 4 —
+             thumbnail-swapper, cel care schimbă fotografia mare). Înăuntru:
+             o fotografie mare (#gallery-main-img) sus și, sub ea, o bandă
+             derulantă de butoane-miniatură (.gallery-thumbs, alunecând în
+             interiorul .gallery-track). Un clic pe o miniatură copiază
+             adresa acelei fotografii — păstrată în atributul ei data-src —
+             în fotografia mare de sus, fără să reîncarce pagina. -->
         <div class="gallery" data-gallery>
           <div class="gallery-main">
             <img
@@ -109,6 +130,10 @@
         </div>
       </section>
 
+      <!-- Coloana din dreapta: povestea produsului, materialele și cum se
+           poate cumpăra. Aceasta este jumătatea de text a structurii pe
+           două coloane — tot ce trebuie să știe vizitatorul despre această
+           piesă anume. -->
       <section class="product-info">
         <span class="product-id reveal">Obiect 05 — Bijuterie</span>
         <h1 class="reveal">Orologiul apelor</h1>
@@ -149,6 +174,11 @@
           <div class="spec-row"><span>Disponibilitate:</span> Piesă unică</div>
         </div>
 
+        <!-- mailto: deschide aplicația de email a vizitatorului cu un mesaj
+             nou, adresat deja atelierului, cu subiectul precompletat cu
+             numele piesei (spațiile sunt scrise ca %20, modul în care web-ul
+             codifică un spațiu într-un URL). Nu e nevoie de JavaScript sau
+             server — e o funcție HTML simplă, integrată în orice browser. -->
         <a
           href="mailto:atelier@texxturalia.com?subject=Orologiul%20apelor"
           class="btn-inquiry reveal"

@@ -44,12 +44,14 @@ Every HTML file in this project follows the same basic structure:
 #### Lines 1-3: File-level comment
 
 ```html
-<!-- index.html — Main entry point (like main.py in a Python project).
+<!-- index.html — The home page (the first page visitors see).
      Introduces the Texxturalia brand and provides portal links
-     (doors) to each workshop: Textiles, Jewelry, Decor. -->
+     (doors) to each workshop: Textiles, Jewelry, Decor.
+     Think of this as the front door of the website — every other
+     page is reached from here or from the navigation menu at the top. -->
 ```
 
-This is the first thing you read when opening the file. It tells you what this file does and gives you a comparison (main.py) to help you understand its role in the project.
+This is the first thing you read when opening the file. It tells you what this file does in plain language: this is the home page, the first page anyone sees when they visit the site, and it links to every other section. You don't need to know any programming language to understand it.
 
 #### Lines 4-26: The `<head>` section
 
@@ -74,7 +76,7 @@ This is the first thing you read when opening the file. It tells you what this f
 
 - `<!doctype html>` — Always the first line. Tells the browser to render in standards mode (not quirks mode). Without this, older browsers would use a broken rendering engine.
 
-- `<html lang="en">` — The root element. Everything in the file lives inside this. `lang="en"` is important for accessibility — screen readers use it to choose the correct pronunciation. The Romanian mirror (`ro/index.html`) uses `lang="ro"`.
+- `<html lang="en">` — The root element. Everything in the file lives inside this. `lang="en"` is important for accessibility — screen readers use it to choose the correct pronunciation. The Romanian mirror (`ro/index.html`) uses `lang="ro"`. (See also the product detail page walkthrough's explanation of the `../../ro/...` path prefix — that section explains how Romanian mirrors live in parallel directory trees and how their relative paths differ from the English pages.)
 
 - `<meta charset="UTF-8" />` — Character encoding. UTF-8 supports every written language (English, Romanian, special characters like em-dashes). Without this, accented characters could appear as garbage.
 
@@ -122,6 +124,8 @@ This is the first thing you read when opening the file. It tells you what this f
 - `<nav>` — The HTML5 semantic element for navigation. Screen readers announce "navigation" when they encounter this. Using `<nav>` (instead of a plain `<div>`) is an accessibility best practice.
 
 - The logo is a link (`<a>`) wrapping a `<div>`. Clicking "T E X T U R A L I A" takes you home. The logo text uses letter-spacing (in CSS) to create the spaced-out brand signature.
+
+  - **`display: contents` on the `<a>` (see CSS GROUP 1):** The logo `<div>` sits inside the `<a>` link. Normally, the `<a>` would create its own box, which would interfere with the navbar's flex layout. `display: contents` makes the `<a>` disappear as a box — its children (the logo `<div>`) take its place directly in the flex layout. This is why the logo aligns perfectly with the other navbar items. Without it, the `<a>` box would break the flex alignment.
 
 - `<button class="mobile-menu-toggle">` — The hamburger button. It's hidden on desktop (`display: none` in CSS) and appears only on mobile. It contains two `<span>` bars that CSS styles as the hamburger icon lines. `aria-label="Open Menu"` is critical for accessibility — screen readers announce "Open Menu button" instead of just "button."
 
@@ -189,6 +193,8 @@ This is the first thing you read when opening the file. It tells you what this f
 - `<footer>` — Semantic footer element. Screen readers announce "footer." Contains the copyright and social links.
 - `target="_blank"` — Opens Instagram in a new tab.
 - `rel="noopener"` — A security best practice when using `target="_blank"`. Without it, the newly opened page can access the original page via `window.opener`, which is a vulnerability. `noopener` breaks that link.
+
+  This pattern — `target="_blank" rel="noopener"` — is used consistently on every external link in this project that opens in a new tab. It's not optional: any `target="_blank"` without `rel="noopener"` exposes the original page to the opened page's JavaScript. The footer Instagram link (line 105 in index.html), the contact page Instagram link, and the product page Instagram links all follow this same pattern.
 
 #### Line 107: The Script Load
 
@@ -274,23 +280,59 @@ Every element in the header has `class="reveal"` — they all fade in when scrol
 </section>
 ```
 
-**Grid structure:**
-- `<section class="exhibit-grid">` — The grid container. CSS makes it `display: grid` with `grid-template-columns: 1.2fr 0.8fr` — a two-column asymmetric layout. The first column is 1.2fr (60% of available space), the second is 0.8fr (40%). This creates the ikebana-like asymmetry.
+**Grid structure — and the aesthetic behind the numbers:**
+
+- `<section class="exhibit-grid">` — The grid container. CSS makes it `display: grid` with `grid-template-columns: 1.2fr 0.8fr` — a two-column asymmetric layout. The first column is 1.2fr (60% of available space), the second is 0.8fr (40%). This ratio is not an arbitrary choice — it mirrors ikebana, the Japanese art of arrangement, where asymmetry and the tension between filled and empty space are the whole point. The wider column carries the image; the narrower column gives it room to breathe. Two columns, but not equal, because equality would read as a spreadsheet. The project is not a spreadsheet.
 - Four `.exhibit-item` divs, each containing:
   - An `<a>` link to the product detail page (or `#` for placeholder items not yet built).
   - An `.image-wrapper` div — the "mat" around the image. Has a background color and padding. Contains either an actual `<img>` or a `.image-placeholder` div.
   - An `.item-info` div — the label below the image: item number + title.
 
-**The stagger pattern:** Items 2 and 4 get a `margin-top` offset (defined in CSS):
+**The stagger pattern — the gravitational argument:** Items 2 and 4 get a `margin-top` offset (defined in CSS):
 - `.exhibit-grid .exhibit-item:nth-child(2)` → `margin-top: 250px`
 - `.exhibit-grid .exhibit-item:nth-child(4)` → `margin-top: 120px`
 - `.exhibit-grid .exhibit-item:nth-child(even)` → `margin-top: 200px` (general rule for even items, overridden by the more specific rules above)
 
+This is the project's answer to the handmade question. A computer grid with equal gaps between every item looks machine-made — which it is. The stagger breaks that rhythm: the second piece drops deeper than the fourth, the fourth drops deeper than the odd ones. It reads as if the pieces settled under their own weight, each at a different rate. Not random — deliberate — but the kind of deliberate that mimics gravity. The even-item rule (`margin-top: 200px`) is the "default fall" for even-positioned items; the specific rules for items 2 and 4 override it because those two carry more weight in the composition. Same specificity, later rule wins — the cascade doing aesthetic work.
+
 This creates a staggered "falling" rhythm — the second piece drops more than the fourth, like objects settling at different rates.
+
+**The intentionally blank slots — `href="#"` is not an error:**
+
+You may notice that some exhibit items (and some collection items) link to `#` instead of a real product page. These are placeholder slots — intentional empty links where a product detail page will eventually live. They are not broken links, not forgotten work, not a bug. The project is built in layers: structure first (HTML, CSS, the grid, the layout), content second (the actual product pages, the photography). A `#` link preserves the grid's rhythm and the page's visual structure while the content underneath is being created. When the product page is built, the `href="#"` is replaced with the real path (e.g., `href="items/jewelry/metal-script-01.html"`). Until then, the card is a signpost pointing to something that exists as an intention but not yet as a file. This is a common pattern in multi-stage web projects — build the skeleton, populate it gradually, never let the skeleton collapse while waiting for the flesh.
 
 **Image placeholders:** Since the real photos aren't shot yet, each image slot uses a `.image-placeholder` div with a height class (`.medium`, `.short`, `.h-450`, `.h-520`). These are defined in CSS GROUP 5 and create colored rectangles of specific heights. They maintain the grid's rhythm even without real images.
 
 **Key concept — `data-*` attributes aren't used here but ARE used in collection.html:** The exhibit pages use direct `<a>` links to product pages. The collection page uses `data-category` attributes for JavaScript filtering. Both are valid patterns — direct links for simple navigation, data attributes for JavaScript-driven interactivity.
+
+**A note on HTML semantics — why `<div>` and not `<article>` or `<section>`?**
+
+You might notice that the items in the portal grid (index.html) and the exhibit grid (textiles.html, jewelry.html, decor.html, guests.html) use `<div class="portal-item">` and `<div class="exhibit-item">` — not `<article>` or `<section>`. This is a deliberate choice, and it's worth understanding why.
+
+**What the HTML5 elements mean:**
+
+- `<article>` — a self-contained composition that could be published on its own, independently of the page it's on. Think of a blog post, a news story, or a product card that contains all its own information. The test is: if you removed this element from the page, would it still make sense as a standalone piece?
+
+- `<section>` — a thematic grouping of content, usually with a heading. It divides a page into logical chunks.
+
+- `<div>` — a generic container with no semantic meaning. It's a hook for CSS and JavaScript. Use it when no other element better describes what the content is.
+
+**Why the portal and exhibit items use `<div>`:**
+
+The items in these grids are **teaser cards** — they point to full compositions that live on other pages. An exhibit item on the textiles page is a link (image + title + item number) that takes you to a product detail page. The card itself is not the complete composition; it's a navigation unit. Using `<article>` would imply the card IS the complete, self-contained work — which it isn't.
+
+The actual self-contained compositions in this project DO use `<article>` and `<section>`:
+
+- `manifesto.html` uses `<article class="manifesto-content">` for the essay — the essay is a self-contained piece of writing.
+- The product detail pages (metal-script-01.html, metal-script-02.html, orologiul-apelor.html) use `<main>` and `<section>` for the split-screen layout — these are the real compositions.
+
+So the project's semantic approach is: **`<div>` for navigation/teaser cards, `<article>`/`<section>` for actual content compositions.**
+
+**An alternative view worth knowing:**
+
+A strong counter-argument exists. Each exhibit card IS a self-contained unit — it has an image, a title, an item number, and a link. In modern web development, a product card in a gallery is often considered an `<article>` because it's a discrete, independently meaningful unit. The collection page (which uses `data-category` attributes for JavaScript filtering) makes this argument even stronger — those items are interactive, self-contained catalogue entries.
+
+The project could just as well use `<article>` for these cards and be semantically correct either way. If you're learning HTML, the important thing is to understand what each element means and make a conscious choice — both positions are defensible. The `<div>` choice here emphasizes the cards' role as navigation; the `<article>` choice would emphasize their role as discrete content units.
 
 ---
 
@@ -351,6 +393,297 @@ This creates a staggered "falling" rhythm — the second piece drops more than t
 - The grid uses `auto-fill` with `minmax(300px, 1fr)` (CSS GROUP 6) — creates as many columns as fit at 300px minimum, unlike the exhibit grid's fixed 2-column asymmetry.
 
 **Key concept — `data-*` attributes:** `data-category` and `data-filter` are custom HTML attributes. They don't affect rendering at all — they're purely for JavaScript to read. The `dataset` property in JavaScript gives you access: `element.dataset.category` returns `"jewelry"`. This is the standard way to pass data from HTML to JavaScript without using inline event handlers or hidden inputs.
+
+---
+
+### Product Detail Pages — The Split-Screen Layout
+
+**Files:** `items/jewelry/metal-script-01.html` (119 lines), `items/jewelry/metal-script-02.html` (116 lines), `items/jewelry/orologiul-apelor.html` (170 lines)
+
+**Role:** These are the individual product pages — the deepest level of the site. Each page presents a single piece in detail: a large visual (the piece itself) on the left, and the story + specifications on the right. This is the split-screen layout — the visitor's eye moves between image and text as they scroll.
+
+All three files share the same basic structure. Two of them (`metal-script-01.html`, `metal-script-02.html`) are simpler — they use an image placeholder because the photography isn't ready yet. The third (`orologiul-apelor.html`) is the most complete and complex: it has a full gallery with 16 photos, a drag-to-scroll thumbnail strip, and the real product photography.
+
+Let's walk through each one.
+
+#### metal-script-01.html — The Simplest Product Page (119 lines)
+
+This is the template that the other two build on. Open it side-by-side with this explanation.
+
+##### Lines 1-26: The `<head>`
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metal Script 01 | The Texxturalia Atelier</title>
+    <meta
+      name="description"
+      content="Detailed view of Metal Script #01. A unique silver wire sculpture from the Texxturalia Atelier. Hand-crafted and adaptable."
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../../images/branding/favicon.ico"
+    />
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@100;200;300;400&display=swap"
+    />
+  </head>
+```
+
+Same pattern as every other page: doctype, language, meta tags, title, description, favicon, style.css, Google Fonts. The one thing to notice is the **relative path** for the stylesheet: `../../style.css`. The product pages live two levels deep (`items/jewelry/`), so the path goes up two directories to reach the root. Compare with `index.html` which uses `style.css` (no prefix needed, since it's in the root). This is why the navbar links in these files also use `../../` — they need to climb back out of the `items/jewelry/` folder to reach the rest of the site.
+
+##### Lines 28-50: The Navbar
+
+```html
+<nav class="navbar">
+  <a href="../../index.html">
+    <div class="logo">T E X X T U R A L I A</div>
+  </a>
+  <button class="mobile-menu-toggle" aria-label="Open Menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="../../textiles.html">Atavic Envelopes</a></li>
+    <li><a href="../../jewelry.html">Sacral Scripts</a></li>
+    <li><a href="../../decor.html">Telluric Dialect(ic)s</a></li>
+    <li><a href="../../guests.html">InterTexxturalia</a></li>
+    <li><a href="../../manifesto.html">Gnosis</a></li>
+    <li><a href="../../collection.html">The Collection</a></li>
+    <li class="lang-select">
+      <a href="../../ro/items/jewelry/metal-script-01.html">RO</a>
+    </li>
+  </ul>
+</nav>
+```
+
+Same structure as every other page. The nav links all use `../../` paths to reach the workshop pages, collection, and manifesto. The language switcher links to the Romanian mirror: `../../ro/items/jewelry/metal-script-01.html`.
+
+##### Lines 52-60: The Left Column — Product Visual
+
+```html
+<main class="product-detail-container">
+  <!-- Left Column: Sticky Visual -->
+  <section class="product-visual reveal">
+    <div class="main-image-wrapper">
+      <!-- Placeholder for my high-res photography -->
+      <div class="image-placeholder tall"></div>
+    </div>
+  </section>
+```
+
+This is the left half of the split-screen. Let's break it down:
+
+- **`<main class="product-detail-container">`** — The root container for the entire product page. CSS (GROUP 9 in `style.css`) turns this into a two-column grid: the visual on the left, the info on the right. On mobile, the grid collapses to a single column (visual first, then text below).
+
+- **`<section class="product-visual reveal">`** — The visual column. Two classes:
+  - `product-visual` — tells CSS "this is the image column." GROUP 9 makes this column `position: sticky` (more on that below).
+  - `reveal` — the scroll-reveal system. This section fades in when it enters the viewport, just like elements on every other page.
+
+- **`<div class="main-image-wrapper">`** — The "mat" around the image. Like `.image-wrapper` on the exhibit pages, this provides padding and a background color. It's the frame that holds the image.
+
+- **`<div class="image-placeholder tall">`** — Since the real photography isn't shot yet, this colored rectangle stands in. The `.tall` class gives it a specific height (defined in CSS GROUP 5) so the layout has the right proportions even without a real image. When the photo session happens, this `<div>` will be replaced with an `<img>` tag.
+
+**Key concept — why a placeholder?** The project is built in order: structure first, content later. The HTML and CSS are complete — the layout works, the grid is correct, the sticky behavior is in place. The only thing missing is the actual photo. The placeholder ensures the page looks right during development and testing, and it's a single-line change to swap in the real `<img>` later.
+
+##### Lines 62-104: The Right Column — Product Info
+
+```html
+<section class="product-info">
+  <span class="product-id reveal">Object 01 — Jewelry</span>
+  <h1 class="reveal">Metal Script #01</h1>
+
+  <div class="philosophy-text reveal">
+    <p>
+      An exploration of the continuous line. Raw silver wire becomes a
+      script in space, capturing an instinctive gesture that will never be
+      repeated.
+    </p>
+    <p>
+      This piece interrogates the fragility of metal when subjected to the
+      organic movement of the hand.
+    </p>
+  </div>
+
+  <div class="product-specs reveal">
+    <div class="spec-row">
+      <span>Material:</span> 925 Silver, Natural Silk Thread
+    </div>
+    <div class="spec-row">
+      <span>Technique:</span> Cold forming, Spatial knots
+    </div>
+    <div class="spec-row">
+      <span>Dimensions:</span> Adaptable (Custom size)
+    </div>
+    <div class="spec-row">
+      <span>Availability:</span> Unique Piece / Exhibition
+    </div>
+  </div>
+
+  <a
+    href="mailto:atelier@texxturalia.com?subject=Metal%20Script%2001"
+    class="btn-inquiry reveal"
+  >
+    Request Purchase / Customization
+  </a>
+</section>
+```
+
+- **`<section class="product-info">`** — The right column. This is where the visitor reads about the piece. Unlike the visual column, this one does NOT have `position: sticky` — it scrolls normally. As the user scrolls down through the text, the image on the left stays pinned to the viewport.
+
+- **`<span class="product-id reveal">`** — A small label: "Object 01 — Jewelry." It's the breadcrumb-like identifier. CSS styles it as small, uppercase, gray text.
+
+- **`<h1 class="reveal">`** — The piece name. This is the only `<h1>` on the page. Search engines use it to understand what the page is about.
+
+- **`<div class="philosophy-text reveal">`** — The story of the piece. Two paragraphs of prose. CSS styles these in Cormorant Garamond Italic — the serif font that gives the project its literary voice. The `reveal` class makes the text block fade in as a unit when scrolled into view.
+
+- **`<div class="product-specs reveal">`** — The specifications grid. Each `.spec-row` is a line like "Material: 925 Silver." CSS turns these into a clean definition-list style (label in a muted color, value next to it). All four rows are wrapped in a container with `reveal` — they appear together on scroll.
+
+- **`<a class="btn-inquiry reveal">`** — The call-to-action button. It's a `mailto:` link that opens the visitor's email client with a pre-filled subject line. The `reveal` class makes it fade in last — the visitor reads the story and specs first, then sees the inquiry option.
+
+##### Lines 107-117: Footer + Script
+
+```html
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>&copy; 2024 TEXXTURALIA. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="../../contact.html">Texxt Us</a>
+      <a href="https://www.instagram.com/j_e_w_e_l_l_i_a/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+<script src="../../script.js"></script>
+```
+
+Same pattern as every other page: copyright, social links, and `<script src="../../script.js"></script>` at the end of the body. The Instagram link points to the jewelry account (`j_e_w_e_l_l_i_a`).
+
+#### metal-script-02.html — Same Structure, Different Piece (116 lines)
+
+This file is nearly identical to `metal-script-01.html`. The only differences:
+
+- `<title>` and `<meta name="description">` — specific to Metal Script #02
+- The product name: "Metal Script #02" instead of "#01"
+- The `mailto:` link subject: `Metal%20Script%2002`
+- The Romanian mirror link points to `metal-script-02.html`
+
+The structure is exactly the same: navbar → sticky visual (placeholder) → product info (id, title, philosophy, specs, inquiry button) → footer → script. This is intentional — the product pages are a template. When a new piece is added, you copy one of these files, change the text and links, and the layout is already correct.
+
+#### orologiul-apelor.html — The Complete Product Page with Gallery (170 lines)
+
+This is the most complex product page because it has a real gallery: 16 photos of "The Clock of Waters" that the visitor can browse. Let's walk through what makes it different from the metal-script pages.
+
+##### Lines 47-110: The Gallery Section
+
+```html
+<section class="product-visual reveal">
+  <div class="gallery" data-gallery>
+    <div class="gallery-main">
+      <img
+        id="gallery-main-img"
+        src="../../images/products/jewelry/orologiul-01.jpg"
+        alt="The Clock of Waters — turquoise cabochons in copper wire nets"
+      />
+    </div>
+    <div class="gallery-thumbs">
+      <div class="gallery-track">
+        <button class="gallery-thumb is-active" data-src="../../images/products/jewelry/orologiul-01.jpg">
+          <img src="../../images/products/jewelry/orologiul-01.jpg" alt="The Clock of Waters — front view" />
+        </button>
+        <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-03.jpg">
+          <img src="../../images/products/jewelry/orologiul-03.jpg" alt="The Clock of Waters — photo 2" />
+        </button>
+        <!-- ... 14 more thumbnail buttons ... -->
+      </div>
+    </div>
+  </div>
+</section>
+```
+
+This is the gallery HTML structure. Let's break down every piece:
+
+**`<div class="gallery" data-gallery>` — The gallery container.**
+
+- `class="gallery"` — CSS styles the gallery: the main image area, the thumbnail strip, spacing, borders. All defined in `style.css` GROUP 9.
+- `data-gallery` — **This is the key.** It's a custom data attribute with no value (its presence is the signal). JavaScript's `initGallery()` function finds every element with `[data-gallery]` on the page and sets up the gallery behavior for it. Without this attribute, the JavaScript ignores the section entirely. This is how HTML tells JavaScript "this is a gallery — handle it."
+
+**`<div class="gallery-main">` — The main image display area.**
+
+This is the large image the visitor sees first. It's a container that holds the display image. CSS gives it a fixed height (calculated with `calc(100vh - 300px)` — the viewport height minus space for the navbar, padding, and thumbnail strip) and centers the image inside with `object-fit: contain`.
+
+**`<img id="gallery-main-img">` — The main display image.**
+
+- `id="gallery-main-img"` — This ID is how JavaScript finds the main image. Inside `initGallery()`, the line `const mainImg = gallery.querySelector("#gallery-main-img")` looks for this exact ID.
+- `src="..."` — The initial image shown when the page loads (the first photo, `orologiul-01.jpg`).
+- `alt="..."` — Descriptive alt text for accessibility. Screen readers announce this.
+
+**`<div class="gallery-thumbs">` — The thumbnail strip container.**
+
+This is the horizontally scrollable area at the bottom of the gallery. CSS makes it:
+- A fixed height (about 100px)
+- `overflow-x: auto` — horizontal scrolling when there are more thumbnails than fit
+- `scroll-snap-type: x mandatory` — the strip snaps to each thumbnail when scrolling stops, creating a clean deck-of-cards feel
+
+**`<div class="gallery-track">` — The scrollable inner.**
+
+This is the actual content that scrolls horizontally. It holds all the thumbnail buttons in a row. The `.gallery-thumbs` container is the "window" (what you see), and `.gallery-track` is the "film" (what scrolls behind it). This two-layer pattern is how horizontal scroll strips work: the outer container clips the inner content, and the inner content is wider than the container.
+
+**`<button class="gallery-thumb" data-src="...">` — Each thumbnail button.**
+
+There are 16 of these, one per photo. Each has:
+
+- `class="gallery-thumb"` — CSS styles the button: it's a small circular/rounded image, with a border. The default state has a light border; the active state (`.is-active`) has a dark border.
+- `data-src="..."` — **This is how the full-resolution image is pointed to.** Each thumbnail has a `data-src` attribute containing the path to the full-size image. When you click a thumbnail, JavaScript reads `thumb.dataset.src` and sets the main image's `src` to that value. The `<img>` inside the button is a *preview* (small version for the strip); the `data-src` points to the *full* version for the main display.
+- `class="is-active"` (on the first one only) — The starting active state. The first thumbnail is highlighted when the page loads, matching the fact that the first image is shown in the main display.
+- `<img>` inside — A small preview image shown *inside* the thumbnail button. This is what you see in the strip before clicking. It's a separate, smaller `src` from the `data-src` (though in this project they happen to point to the same files — the distinction matters when you want different thumbnails and full images).
+
+##### How the Gallery Connects to JavaScript
+
+In `script.js`, the `initGallery()` function (lines 75-124) does the following:
+
+1. **Finds all galleries:** `document.querySelectorAll("[data-gallery]")` — finds every element with the `data-gallery` attribute. Each product page has one.
+
+2. **For each gallery, finds the parts:**
+   - `mainImg` = the element with `#gallery-main-img` (the big display image)
+   - `thumbs` = all elements with `.gallery-thumb` (the 16 thumbnail buttons)
+   - `viewport` = the element with `.gallery-thumbs` (the scrollable strip container)
+
+3. **Defines `setMain(thumb)`:** When a thumbnail is clicked:
+   - `mainImg.src = thumb.dataset.src` — swaps the main image to the full-res version
+   - Removes `.is-active` from all thumbnails
+   - Adds `.is-active` to the clicked thumbnail
+
+4. **Sets up drag-to-scroll:** The thumbnail strip can be dragged left/right with the mouse (or finger on mobile). The code uses pointer events (`pointerdown`, `pointermove`, `pointerup`) which work for both mouse and touch. It tracks how far the pointer moved — if it moved more than 10px, it was a drag (scroll the strip); if less, it was a click (swap the image). This prevents the common bug where dragging to scroll accidentally triggers a thumbnail swap.
+
+5. **Attaches click handlers to each thumbnail:** Each thumbnail gets a click listener. If the user clicked (not dragged), `setMain(thumb)` runs and the main image updates.
+
+**Key concept — the gallery is self-contained.** The HTML has everything needed: the structure (`data-gallery`), the main image (`#gallery-main-img`), the thumbnails (`.gallery-thumb` with `data-src`), and the strip (`.gallery-thumbs`). The JavaScript finds these pieces by their classes and IDs and connects them. No inline event handlers, no `onclick` attributes — everything is wired up by the external script. This is the clean separation: HTML defines what exists, CSS defines how it looks, JavaScript defines how it behaves.
+
+##### Lines 112-157: Product Info (same pattern as metal-script-01.html)
+
+The right column follows the same structure: product ID, title, Romanian title (`Orologiul apelor`), philosophy text (two paragraphs), specs (5 rows including Length, which the metal-script pieces don't have), and the inquiry button. The `mailto:` subject is `The%20Clock%20of%20Waters`.
+
+##### Key concept — the split-screen layout in practice:
+
+When you scroll `orologiul-apelor.html`, here's what happens:
+- The gallery image on the left stays pinned to the top of the viewport (thanks to `position: sticky` in CSS GROUP 9)
+- The text on the right scrolls normally: first the product ID and title, then the philosophy, then the specs, then the inquiry button
+- As you scroll through the thumbnails on the left, you can drag them or click to swap the main image
+- The visitor can look at the image and read about the piece at the same time, without the image scrolling away
+
+This is why the split-screen layout works for product pages: the object is always visible while the story unfolds beside it.
+
+##### Lines 159-170: Footer + Script
+
+Same pattern. The Romanian mirror link points to `../../ro/items/jewelry/orologiul-apelor.html`.
 
 ---
 
@@ -453,7 +786,7 @@ This creates a staggered "falling" rhythm — the second piece drops more than t
 **Key concepts:**
 - `<body class="error-page">` — The body itself has a class. CSS makes `.error-page` fill the viewport (`height: 100vh`) and center its content with flexbox.
 - The 404 number is displayed as a huge (5rem) lightweight (font-weight 100) heading in a muted color (#dcd7cf — pale oxide).
-- Bilingual messages: the English message has higher opacity (more prominent) since the primary audience is English-speaking; the Romanian message is slightly dimmer.
+- Bilingual messages: the English message has higher opacity (more prominent) since the primary audience is English-speaking; the Romanian message is slightly dimmer. This hierarchy is a deliberate design choice — the EN message carries the primary content, while the RO message is a nod to the project's bilingual strategy, inviting Romanian-speaking visitors into the same experience.
 - `.btn-back` is an understated button — not a heavy CTA, just a text link with a bottom border. The border acts as a "thread" connecting back to the homepage.
 
 ---
@@ -816,7 +1149,7 @@ The CSS file is fully commented in English. Below is a summary of each group and
 
 ### GROUP 5 — Exhibit Pages: The Ikebana Grid
 
-**Concepts:** Asymmetric grid, nth-child selectors, image-wrapper as virtual frame, item-info hierarchy.
+**Concepts:** Asymmetric grid, nth-child selectors, image-wrapper as virtual frame, item-info hierarchy. The numbers here are aesthetic choices, not arbitrary defaults — see the exhibit grid walkthrough in Part 1 for the ikebana and gravitational reasoning behind `1.2fr`/`0.8fr` and the stagger pattern.
 
 - `grid-template-columns: 1.2fr 0.8fr` — Asymmetric 2-column layout. The first column is 60% of available space, the second is 40%.
 
@@ -1032,6 +1365,42 @@ Contains:
 - **Part 4: Markdown files** — The role of each doc file.
 
 **How it was written:** Each section starts with the file's purpose, then walks through the code in the order it appears. Code blocks show the actual code, and explanations follow. The goal is that a student with basic HTML/CSS/JS knowledge can read this document alongside the project files and understand every line.
+
+---
+
+## Part 5: Architectural Decisions — The Why Behind the How
+
+### The Romanian Mirror — Two Parallel File Trees
+
+The project ships a Romanian version of every page alongside the English original. The Romanian pages live under `ro/` and mirror the exact same directory structure as the English files — `ro/index.html` corresponds to `index.html`, `ro/jewelry.html` to `jewelry.html`, `ro/items/jewelry/orologiul-apelor.html` to `items/jewelry/orologiul-apelor.html`, and so on.
+
+**The structural rule:** Romanian files are structural replicas — same HTML skeleton, same CSS class names, same JavaScript wiring — with Romanian text substituted in every visible string. The paths adjust because the files sit one level deeper: a Romanian product page under `ro/items/jewelry/` needs `../../` to reach the root-level CSS and nav links, just like its English counterpart under `items/jewelry/`. The rule of thumb for writing these paths: every `../` climbs one level toward the root from wherever the file sits. A file at `ro/items/jewelry/metal-script-01.html` is three levels deep (ro → items → jewelry → file), so it needs `../../../` to reach `index.html` at the root, and `../../style.css` to reach the stylesheet.
+
+**Why this approach instead of i18n (internationalization libraries):**
+
+1. **Editorial control.** Every Romanian phrase is hand-written, not machine-translated. The atelier's voice — its register, its word choices, its silences — is preserved in the source. i18n frameworks that rely on translation keys or auto-translation pipelines strip that voice out; the Romanian becomes a mirror of the English skeleton rather than a living text. With parallel files, the Romanian is written by a Romanian speaker (or a writer who knows the language) and lives in its own files, not in a translation table.
+
+2. **No JavaScript required for language switching.** The language switcher in the navbar is a plain `<a href="ro/index.html">` — an ordinary link. No JS framework, no cookie, no localStorage, no URL hash routing. The browser navigates to a different page the same way it navigates to any other page. This means the site works with JavaScript disabled, works on the first load without a hydration step, and works on every browser back to IE5. The cost is that the Romanian is a separate page, not a toggled layer — but that's the same trade-off the rest of the project makes (no framework, no build step, no npm).
+
+3. **Free hosting, no server logic.** The site is served as static files. There is no server-side language detection, no Accept-Language header parsing, no locale middleware. The Romanian mirror is just another directory of HTML files the web server sends when asked. Hosting is zero-config: drop the files on any static host (GitHub Pages, Netlify, a VPS with nginx) and both languages work. An i18n approach that relies on server-side routing or client-side JavaScript to swap content adds complexity that the project's hosting model doesn't need.
+
+4. **The mirror is a Teaching artifact, not just a translation.** The Romanian files are part of what the project teaches. A student reading LEARNING.md can open `ro/index.html` and compare it side-by-side with `index.html` — same structure, different language. That comparison teaches something about how HTML structure is language-agnostic and how content lives in text nodes, not in the markup. It's a deliberate didactic choice, not an accident of implementation.
+
+**What this means in practice:** Every time a new English page is added, a Romanian counterpart should be created under `ro/` with the same path. Every time English text is updated, the Romanian should be checked for consistency. The two trees are peers — neither is derived from the other. They are written by different hands, for different readers, about the same project.
+
+---
+
+### Why Bilingual Mirroring — The Editorial Rationale
+
+The project is bilingual by design, not by accident. The English pages are the canonical, primary version — they are written first, they are the reference for what the project says. The Romanian pages are a deliberate second voice, not a derivative. Here is why:
+
+**Total editorial control over Romanian phrasing.** The Romanian text is not a translation in the machine-translation sense — it is a rewrite. A piece described in English as "The raven's script. Sacred copper traces in the primordial chasm." becomes, in Romanian, something written by someone who hears the language differently. The Romanian is not required to match the English sentence-by-sentence; it is required to carry the same intent, the same atmosphere, the same register. This is only possible when the Romanian lives in its own files, written by a person, not extracted from a translation key or generated by an API.
+
+**No JavaScript for language switching.** The project is built around the idea that the web works without JavaScript. The language switcher is a link. The Romanian page loads independently, with its own `<html lang="ro">`, its own metadata, its own content. There is no framework detecting the user's browser language and redirecting them, no cookie remembering their choice, no client-side rendering swapping text nodes. This keeps the site fast, accessible, and honest about what it is: two separate pages, one in English, one in Romanian, each complete on its own.
+
+**English-first canonical strategy.** The English version is the source of truth. When the project adds a new universe, a new piece, a new page, the English file is written first. The Romanian follows. This is not because English is more important — it is because the project was conceived in English, the primary writer works in English, and the Romanian is a deliberate act of translation-into-a-second-voice that happens after the English exists. The English-first order is an editorial workflow, not a statement about which language is superior.
+
+**The Romanian mirror is not i18n — it is a second writing.** This distinction matters. i18n (internationalization) is the engineering practice of preparing a product to support multiple languages, usually by externalizing strings into translation files, adding locale-aware formatting, and building a system that can swap languages at runtime. The project does none of that. What it does instead is maintain two complete, independent sets of HTML files — one English, one Romanian — and let the reader choose which to read by clicking a link. This is simpler, slower to maintain (every English change needs a Romanian counterpart), and more honest about what bilingual content actually is: not a single text with a language switch, but two texts that happen to describe the same project.
 
 ---
 

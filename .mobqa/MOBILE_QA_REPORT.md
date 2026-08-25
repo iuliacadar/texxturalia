@@ -59,3 +59,7 @@ Any horizontal page scroll, clipped interactive element, or unusable control.
    no overlap, clipping, or broken layout observed.
 
 ## Verdict: ALL PAGES PASS at 390x844 and 768x1024.
+
+---
+
+Delta 2026-08-24 (post polish commit 7466968): ALL PASS. See MOBILE_QA_DELTA_2026-08-24.md — h1 scale (collection 40px, manifesto 44px, product 48px/1.1), touch targets >=44px (toggle 45x45, filter-btn 44px, thumbs 84px), zero overflow at 390/768, hamburger overlay verified, gallery thumb swap working.

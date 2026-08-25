@@ -1,4 +1,9 @@
-﻿<!doctype html>
+﻿<!-- orologiul-apelor.html — Product detail page for "The Clock of Waters",
+     a one-of-a-kind copper-wire necklace with twelve turquoise cabochons.
+     This page lives two folders deep (items/jewelry/), which is why every
+     link and image path on this page starts with "../../" — that means
+     "go up two folders" to reach the site root before continuing. -->
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -44,8 +49,22 @@
       </ul>
     </nav>
 
+    <!-- The split-screen layout: .product-detail-container is styled by CSS
+         to form two columns side by side — the product photos on the left
+         (.product-visual) and the story + specs on the right (.product-info).
+         The visitor's eye moves back and forth between image and text as
+         they scroll. On a narrow (mobile) screen, CSS stacks the two
+         columns into one, photos first, then text underneath. -->
     <main class="product-detail-container">
       <section class="product-visual reveal">
+        <!-- data-gallery marks this box as "the photo gallery" so
+             script.js's thumbnail-swapper (Mechanism 4) can find it.
+             Inside: one big photo (#gallery-main-img) up top, and a
+             scrollable strip of small thumbnail buttons below it
+             (.gallery-thumbs, sliding inside .gallery-track). Clicking a
+             thumbnail button copies that photo's address — stored in its
+             data-src attribute — into the big photo above, without
+             reloading the page. -->
         <div class="gallery" data-gallery>
           <div class="gallery-main">
             <img
@@ -56,52 +75,52 @@
           </div>
           <div class="gallery-thumbs">
             <div class="gallery-track">
-            <button class="gallery-thumb is-active" data-src="../../images/products/jewelry/orologiul-01.jpg">
+            <button class="gallery-thumb is-active" aria-label="View photo 1" data-src="../../images/products/jewelry/orologiul-01.jpg">
               <img src="../../images/products/jewelry/orologiul-01.jpg" alt="The Clock of Waters — front view" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-03.jpg">
+            <button class="gallery-thumb" aria-label="View photo 2" data-src="../../images/products/jewelry/orologiul-03.jpg">
               <img src="../../images/products/jewelry/orologiul-03.jpg" alt="The Clock of Waters — photo 2" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-04.jpg">
+            <button class="gallery-thumb" aria-label="View photo 3" data-src="../../images/products/jewelry/orologiul-04.jpg">
               <img src="../../images/products/jewelry/orologiul-04.jpg" alt="The Clock of Waters — photo 3" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-05.jpg">
+            <button class="gallery-thumb" aria-label="View photo 4" data-src="../../images/products/jewelry/orologiul-05.jpg">
               <img src="../../images/products/jewelry/orologiul-05.jpg" alt="The Clock of Waters — photo 4" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-06.jpg">
+            <button class="gallery-thumb" aria-label="View photo 5" data-src="../../images/products/jewelry/orologiul-06.jpg">
               <img src="../../images/products/jewelry/orologiul-06.jpg" alt="The Clock of Waters — photo 5" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-07.jpg">
+            <button class="gallery-thumb" aria-label="View photo 6" data-src="../../images/products/jewelry/orologiul-07.jpg">
               <img src="../../images/products/jewelry/orologiul-07.jpg" alt="The Clock of Waters — photo 6" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-08.jpg">
+            <button class="gallery-thumb" aria-label="View photo 7" data-src="../../images/products/jewelry/orologiul-08.jpg">
               <img src="../../images/products/jewelry/orologiul-08.jpg" alt="The Clock of Waters — photo 7" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-09.jpg">
+            <button class="gallery-thumb" aria-label="View photo 8" data-src="../../images/products/jewelry/orologiul-09.jpg">
               <img src="../../images/products/jewelry/orologiul-09.jpg" alt="The Clock of Waters — photo 8" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-10.jpg">
+            <button class="gallery-thumb" aria-label="View photo 9" data-src="../../images/products/jewelry/orologiul-10.jpg">
               <img src="../../images/products/jewelry/orologiul-10.jpg" alt="The Clock of Waters — photo 9" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-11.jpg">
+            <button class="gallery-thumb" aria-label="View photo 10" data-src="../../images/products/jewelry/orologiul-11.jpg">
               <img src="../../images/products/jewelry/orologiul-11.jpg" alt="The Clock of Waters — photo 10" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-12.jpg">
+            <button class="gallery-thumb" aria-label="View photo 11" data-src="../../images/products/jewelry/orologiul-12.jpg">
               <img src="../../images/products/jewelry/orologiul-12.jpg" alt="The Clock of Waters — photo 11" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-13.jpg">
+            <button class="gallery-thumb" aria-label="View photo 12" data-src="../../images/products/jewelry/orologiul-13.jpg">
               <img src="../../images/products/jewelry/orologiul-13.jpg" alt="The Clock of Waters — photo 12" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-14.jpg">
+            <button class="gallery-thumb" aria-label="View photo 13" data-src="../../images/products/jewelry/orologiul-14.jpg">
               <img src="../../images/products/jewelry/orologiul-14.jpg" alt="The Clock of Waters — photo 13" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-15.jpg">
+            <button class="gallery-thumb" aria-label="View photo 14" data-src="../../images/products/jewelry/orologiul-15.jpg">
               <img src="../../images/products/jewelry/orologiul-15.jpg" alt="The Clock of Waters — photo 14" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-16.jpg">
+            <button class="gallery-thumb" aria-label="View photo 15" data-src="../../images/products/jewelry/orologiul-16.jpg">
               <img src="../../images/products/jewelry/orologiul-16.jpg" alt="The Clock of Waters — photo 15" />
             </button>
-            <button class="gallery-thumb" data-src="../../images/products/jewelry/orologiul-17.jpg">
+            <button class="gallery-thumb" aria-label="View photo 16" data-src="../../images/products/jewelry/orologiul-17.jpg">
               <img src="../../images/products/jewelry/orologiul-17.jpg" alt="The Clock of Waters — photo 16" />
             </button>
             </div>
@@ -109,6 +128,9 @@
         </div>
       </section>
 
+      <!-- Right column: the product's story, materials, and how to buy it.
+           This section is the text half of the split-screen layout —
+           everything a visitor needs to know about this specific piece. -->
       <section class="product-info">
         <span class="product-id reveal">Object 05 — Jewelry</span>
         <h1 class="reveal">The Clock of Waters</h1>
@@ -148,6 +170,11 @@
           </div>
         </div>
 
+        <!-- mailto: opens the visitor's own email app with a new message
+             already addressed to the atelier, subject line pre-filled with
+             this piece's name (spaces written as %20, the web's way of
+             encoding a space inside a URL). No JavaScript or server needed
+             — this is a plain HTML feature built into every browser. -->
         <a
           href="mailto:atelier@texxturalia.com?subject=The%20Clock%20of%20Waters"
           class="btn-inquiry reveal"

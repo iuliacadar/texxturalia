@@ -10,7 +10,7 @@
       content="Corvus de Texxturalia: Scriituri sacre în cupru și argint. Sculpturi din sârmă modelate manual care interoghează abisul primordial."
     />
 
-    <!-- Căile către resursele din root -->
+    <!-- Căile către resursele din root — Paths to the root-level resources -->
     <link
       rel="icon"
       type="image/x-icon"
@@ -18,7 +18,7 @@
     />
     <link rel="stylesheet" href="../style.css" />
 
-    <!-- Fonturi Google -->
+    <!-- Fonturi Google — Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,7 +35,6 @@
       <button class="mobile-menu-toggle" aria-label="Meniu">
         <span class="bar"></span>
         <span class="bar"></span>
-        <!-- <span class="bar"></span> -->
       </button>
       <ul class="nav-links">
         <li><a href="textiles.html">Învelișuri atavice</a></li>
@@ -43,14 +42,14 @@
         <li><a href="decor.html">Dialectici telurice</a></li>
         <li><a href="guests.html">InterTexxturalia</a></li>
         <li><a href="manifesto.html">Gnoză</a></li>
-        <!-- Switch înapoi la Engleză -->
+        <!-- Switch înapoi la Engleză — Switch back to English -->
 
         <li><a href="../collection.html">Colecția</a></li>
         <li class="lang-select"><a href="../jewelry.html">EN</a></li>
       </ul>
     </nav>
 
-    <!-- Folosim clasa .jewelry-theme pentru atmosfera de cupru/oxid/căldură -->
+    <!-- Folosim clasa .jewelry-theme pentru atmosfera de cupru/oxid/căldură — We use the .jewelry-theme class for the copper/oxide/warmth atmosphere -->
     <main class="exhibit-container jewelry-theme">
       <header class="exhibit-header">
         <span class="eyebrow">Scriituri Sacre</span>
@@ -61,13 +60,20 @@
         </p>
       </header>
 
+      <!--
+        MODEL DE LOCURI REZERVATE (intenționat, NU un link greșit):
+        Piesele al căror <a> folosește href="#" sunt locuri rezervate pentru
+        lucrări viitoare — fotografiile și paginile lor de produs nu există încă.
+        Când o piesă este gata: indică linkul către pagina ei din
+        items/<categorie>/ și înlocuiește div-ul .image-placeholder cu un <img>.
+      -->
       <section class="exhibit-grid">
-        <!-- Piesa 01 -->
+        <!-- Piesa 01 — Piece 01 -->
         <div class="exhibit-item reveal">
-          <!-- Greșit: href="../items/jewelry/metal-script-01.html" (asta te scoate din folderul ro și te duce în cel en). Corect: href="items/jewelry/metal-script-01.html" (fără puncte la început, pentru că ești deja în folderul ro și vrei să intri în subfolderul său de items)-->
+          <!-- Greșit: href="../items/jewelry/metal-script-01.html" (asta te scoate din folderul ro și te duce în cel en). Corect: href="items/jewelry/metal-script-01.html" (fără puncte la început, pentru că ești deja în folderul ro și vrei să intri în subfolderul său de items) — Wrong: href="../items/jewelry/metal-script-01.html" (this takes you out of the ro folder and into the en one). Correct: href="items/jewelry/metal-script-01.html" (no leading dots, because you are already in the ro folder and want to enter its items subfolder) -->
           <a href="items/jewelry/metal-script-01.html">
             <div class="image-wrapper">
-              <!-- Placeholder pentru imagine -->
+              <!-- Placeholder pentru imagine — Placeholder for the image -->
               <div class="image-placeholder medium"></div>
             </div>
             <div class="item-info">
@@ -77,7 +83,7 @@
           </a>
         </div>
 
-        <!-- Piesa 02 -->
+        <!-- Piesa 02 — Piece 02 -->
         <div class="exhibit-item reveal">
           <a href="#">
             <div class="image-wrapper">
@@ -90,7 +96,7 @@
           </a>
         </div>
 
-        <!-- Piesa 03 -->
+        <!-- Piesa 03 — Piece 03 -->
         <div class="exhibit-item reveal">
           <a href="#">
             <div class="image-wrapper">
@@ -103,7 +109,7 @@
           </a>
         </div>
 
-        <!-- Piesa 04 -->
+        <!-- Piesa 04 — Piece 04 -->
         <div class="exhibit-item reveal">
           <a href="#">
             <div class="image-wrapper">
@@ -124,8 +130,6 @@
         <div class="footer-links">
           <a href="contact.html">Corespondență</a>
           <a href="https://www.instagram.com/j_e_w_e_l_l_i_a/" target="_blank" rel="noopener">Instagram</a>
-          <!-- <a href="https://www.instagram.com/j_e_w_e_l_l_i_a/" target="_blank" rel="noopener">Instagram haine</a> -->
-          <!-- <a href="https://www.instagram.com/j_e_w_e_l_l_i_a/" target="_blank" rel="noopener">Instagram bijuterii</a> -->
         </div>
       </div>
     </footer>

@@ -63,6 +63,38 @@
         </button>
       </div>
 
+      <!--
+        THE data-filter / data-category MECHANISM (HTML side):
+        Each button above carries a custom attribute, data-filter="jewelry"
+        (etc.) — a label JavaScript can read but that means nothing to the
+        browser's rendering. Below, each grid item carries the matching
+        attribute data-category="jewelry" on its wrapping <div>. Clicking a
+        button (see script.js, initCollectionFilter — also documented in
+        docs/LEARNING.md, "Mechanism 3: Collection Filter") reads the
+        clicked button's data-filter value, then walks every .exhibit-item
+        in #collection-grid and compares its data-category against that
+        value: matches stay visible, everything else gets display: none.
+        "all" is special-cased to mean "show everything." So the HTML's
+        only job here is to carry two matching labels (data-filter on the
+        button, data-category on the card) — all the actual show/hide
+        logic lives in script.js, not in this file.
+
+        WHY THIS GRID USES auto-fill/minmax INSTEAD OF THE EXHIBIT PAGES'
+        1.2fr/0.8fr ASYMMETRIC COLUMNS:
+        textiles.html / jewelry.html / decor.html / guests.html each show a
+        fixed set of four pieces from ONE universe, so a hand-tuned two
+        column ikebana layout (1.2fr/0.8fr, staggered) makes sense — the
+        item count is known and stable. This page is different: it's the
+        full archive across every universe, filtered live by JavaScript, so
+        the number of VISIBLE items changes constantly (5 when "All" is
+        selected today, fewer as filters narrow, more as new pieces are
+        added over time). A hand-placed asymmetric grid can't gracefully
+        handle a shifting item count. CSS Grid's auto-fill with
+        minmax(300px, 1fr) solves that: it automatically creates as many
+        equal-width columns as fit the available space (each at least
+        300px wide), reflowing the grid whenever items appear or disappear.
+        Predictable but flexible, over deliberately posed but fixed.
+      -->
       <section class="collection-grid" id="collection-grid">
         <!-- Jewelry -->
         <div class="exhibit-item reveal" data-category="jewelry">

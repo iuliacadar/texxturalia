@@ -41,14 +41,14 @@
         <li><a href="decor.html">Dialectici telurice</a></li>
         <li><a href="guests.html">InterTexxturalia</a></li>
         <li><a href="manifesto.html">Gnoză</a></li>
-        <!-- Switch înapoi la Engleză -->
+        <!-- Switch înapoi la Engleză — Switch back to English -->
 
         <li><a href="../collection.html">Colecția</a></li>
         <li class="lang-select"><a href="../guests.html">EN</a></li>
       </ul>
     </nav>
 
-    <!-- Clasa guests-theme pentru atmosfera de galerie neutră / claritate -->
+    <!-- Clasa guests-theme pentru atmosfera de galerie neutră / claritate — English gloss: The guests-theme class applies the neutral gallery / clarity atmosphere -->
     <main class="exhibit-container guests-theme">
       <header class="exhibit-header">
         <span class="eyebrow">InterTexxturalia</span>
@@ -60,12 +60,45 @@
         </p>
       </header>
 
+      <!--
+        MODEL DE LOCURI REZERVATE (intenționat, NU un link greșit):
+        Piesele invitaților al căror <a> folosește href="#" sunt locuri
+        rezervate pentru colaborări viitoare — fotografiile și paginile lor
+        nu există încă. Când o piesă invitată este gata: indică linkul către
+        pagina ei din items/guests/ și înlocuiește .image-placeholder cu un <img>.
+      -->
+
+      <!--
+        ADAUGAREA UNUI NOU ARTIST INVITAT — copiază tot acest bloc:
+        English gloss: ADDING A NEW GUEST ARTIST — copy this whole block.
+        Pentru a adăuga o intrare nouă, duplică unul dintre blocurile
+        <div class="exhibit-item reveal"> ... </div> de mai jos (inclusiv
+        div-ul lui interior) și schimbă patru lucruri în copia ta:
+          1. href-ul de pe <a> — indică-l spre pagina noului produs din
+             items/guests/ (sau lasă-l "#" ca substituent — vezi nota
+             MODEL DE LOCURI REZERVATE de mai sus).
+          2. Clasa de mărime a image-placeholder (medium / short / wide /
+             h-480 etc.) — alege-o pe cea care păstrează ritmul grilei, sau
+             înlocuiește tot div-ul .image-placeholder cu un <img> real
+             odată ce ai o fotografie.
+          3. Span-ul item-number — treci-l la numărul următor (05, 06, ...).
+          4. Textul din <h2>Numele Piesei</h2> și
+             <p class="artist-credit">de Nume Artist</p> — completează cu
+             titlul real al piesei și numele artistului invitat.
+        Lipește blocul nou oriunde în interiorul
+        <section class="exhibit-grid">, înainte de eticheta de închidere
+        </section>.
+        (English gloss: To add a new entry, duplicate one of the
+        exhibit-item blocks below and update the link, the placeholder
+        size class, the item number, and the title/artist text. Paste the
+        new block anywhere inside the exhibit-grid section.)
+      -->
       <section class="exhibit-grid">
         <!-- Guest 01 -->
         <div class="exhibit-item reveal">
           <a href="items/guests/guest-piece-01.html">
             <div class="image-wrapper">
-              <!-- Placeholder: Va fi înlocuit cu <img> după ședința foto -->
+              <!-- Placeholder: Va fi înlocuit cu <img> după ședința foto — Placeholder: will be replaced with an <img> after the photo shoot -->
               <div class="image-placeholder medium"></div>
             </div>
             <div class="item-info">
@@ -78,7 +111,7 @@
           </a>
         </div>
 
-        <!-- Aici poți adăuga mai mulți artiști invitați respectând structura -->
+        <!-- More guest entries follow this same structure -->
       </section>
     </main>
 

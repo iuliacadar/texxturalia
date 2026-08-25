@@ -52,8 +52,50 @@
         </p>
       </header>
 
+      <!--
+        PLACEHOLDER PATTERN (intentional, NOT a broken link):
+        Exhibit pieces whose <a> uses href="#" are reserved slots for future
+        works — their photos and product pages don't exist yet.
+        When a piece is ready: point the link at its page under
+        items/<category>/ and replace the .image-placeholder div with an <img>.
+      -->
+
+      <!--
+        THE IKEBANA GRID (why this section looks asymmetric on purpose):
+        .exhibit-grid is a CSS Grid with two columns set to
+        grid-template-columns: 1.2fr 0.8fr — NOT 1fr 1fr. That means the
+        left column always gets 60% of the row's width and the right
+        column gets 40%. Two columns, but never equal, on purpose.
+
+        The reasoning is borrowed from ikebana, the Japanese art of
+        flower arranging, where a "correct" arrangement is deliberately
+        asymmetric — empty space (ma) carries as much meaning as the
+        flower itself. A perfectly even 1fr/1fr grid reads like a
+        spreadsheet: technically tidy, visually cold. The 1.2fr/0.8fr
+        split keeps the grid readable (still two clear columns) while
+        avoiding that machine-made evenness.
+
+        The "stagger" you'll notice when scrolling — items 2 and 4
+        sitting lower than items 1 and 3 — comes from margin-top rules
+        on :nth-child(even) in style.css, not from anything in this
+        HTML. The rationale is the same as the column split: an
+        irregular vertical rhythm reads as handmade/settled, like
+        objects that fell into place at slightly different rates,
+        rather than snapped to a rigid invisible grid line.
+
+        Why each piece is wrapped in a <div class="exhibit-item"> and
+        not <article> or <section>: these cards are teaser/navigation
+        units — an image, a number, a title, and a link out to a full
+        product page. They are not, by themselves, a complete piece of
+        content (that's what the linked product page is for), so <div>
+        is the honest, non-misleading choice here. If a card ever grew
+        to hold real self-contained information (price, materials,
+        full description) inline, <article> would become the better
+        fit — see docs/DECISIONS.md, entry
+        "semantic-elements-div-for-teaser-cards", for the full reasoning.
+      -->
       <section class="exhibit-grid">
-        <!-- Piece 01 -->
+        <!-- Piece 01 — Linen Archive (dominant, left column) -->
         <div class="exhibit-item reveal">
           <a href="items/textiles/layer-01.html">
             <div class="image-wrapper">
@@ -67,7 +109,7 @@
           </a>
         </div>
 
-        <!-- Piece 02 -->
+        <!-- Piece 02 — Organic Vestiges (right column, pushed down by CSS stagger) -->
         <div class="exhibit-item reveal">
           <a href="#">
             <div class="image-wrapper">
@@ -81,7 +123,7 @@
           </a>
         </div>
 
-        <!-- Piece 03 (returns to column 1) -->
+        <!-- Piece 03 — Hypnotic Nets (returns to column 1) -->
         <div class="exhibit-item reveal">
           <a href="#">
             <div class="image-wrapper">
@@ -95,9 +137,9 @@
           </a>
         </div>
 
-        <!-- Piece 04 (piece 2 drops more, piece 4 drops less) -->
+        <!-- Piece 04 — Caught Between the Tapestry of Silence & Beauty (right column) -->
         <div class="exhibit-item reveal">
-          <a href="items/jewelry/metal-script-02.html">
+          <a href="#">
             <div class="image-wrapper">
               <!-- Placeholder — replace with your photo -->
               <div class="image-placeholder h-520"></div>

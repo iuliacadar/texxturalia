@@ -24,7 +24,9 @@
 
   <body>
     <nav class="navbar">
-      <a href="index.html"><div class="logo">T E X X T U R A L I A</div></a>
+      <a href="index.html">
+        <div class="logo">T E X X T U R A L I A</div>
+      </a>
       <button class="mobile-menu-toggle" aria-label="Open Menu">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -41,6 +43,12 @@
       </ul>
     </nav>
 
+    <!-- Clasa de temă (theme class) .decor-theme aplică atmosfera cromatică
+         piatră/beton (stone/concrete chromatic ambiance) tuturor
+         elementelor copil (fundaluri image-wrapper, stări hover, etc.).
+         Mai multe clase pe un element sunt separate prin spațiu în HTML —
+         aici .exhibit-container oferă scheletul de layout,
+         .decor-theme oferă atmosfera de culoare. -->
     <main class="exhibit-container decor-theme">
       <header class="exhibit-header">
         <span class="eyebrow">Dialectici Telurice</span>
@@ -52,12 +60,20 @@
         </p>
       </header>
 
+      <!--
+        MODEL DE LOCURI REZERVATE (intenționat, NU un link greșit):
+        Piesele al căror <a> folosește href="#" sunt locuri rezervate pentru
+        lucrări viitoare — fotografiile și paginile lor de produs nu există încă.
+        Când o piesă este gata: indică linkul către pagina ei din
+        items/<categorie>/ și înlocuiește div-ul .image-placeholder cu un <img>.
+      -->
       <section class="exhibit-grid">
         <div class="exhibit-item reveal">
           <a href="items/decor/object-01.html">
             <div class="image-wrapper"><div class="image-placeholder h-550"></div></div>
             <div class="item-info">
               <span class="item-number">01</span>
+              <!-- "Monolit Interior" — o formă unică, dominantă, verticală -->
               <h2>Monolit Interior</h2>
             </div>
           </a>
@@ -67,6 +83,7 @@
             <div class="image-wrapper"><div class="image-placeholder h-450"></div></div>
             <div class="item-info">
               <span class="item-number">02</span>
+              <!-- "Structură Negativă" — o formă definită prin absență/gol (void) -->
               <h2>Structură Negativă</h2>
             </div>
           </a>
@@ -76,6 +93,7 @@
             <div class="image-wrapper"><div class="image-placeholder h-450"></div></div>
             <div class="item-info">
               <span class="item-number">03</span>
+              <!-- "Lupanar" — o piesă cu referință istorică/mitică -->
               <h2>Lupanar</h2>
             </div>
           </a>
@@ -85,6 +103,7 @@
             <div class="image-wrapper"><div class="image-placeholder h-550"></div></div>
             <div class="item-info">
               <span class="item-number">04</span>
+              <!-- "Altare de Cenușă" — obiect ritualic ce trimite la Muntele Lykaion -->
               <h2>Altare de Cenușă</h2>
             </div>
           </a>

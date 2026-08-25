@@ -43,7 +43,11 @@
       </ul>
     </nav>
 
-    <!-- Theme class .decor-theme applies the stone/concrete chromatic ambiance -->
+    <!-- Theme class .decor-theme applies the stone/concrete chromatic ambiance
+         to all child elements (image-wrapper backgrounds, hover states, etc.).
+         Multiple classes on one element are space-separated in HTML —
+         here .exhibit-container provides the layout skeleton,
+         .decor-theme provides the color atmosphere. -->
     <main class="exhibit-container decor-theme">
       <header class="exhibit-header">
         <span class="eyebrow">Telluric Dialect(ic)s</span>
@@ -55,6 +59,13 @@
         </p>
       </header>
 
+      <!--
+        PLACEHOLDER PATTERN (intentional, NOT a broken link):
+        Exhibit pieces whose <a> uses href="#" are reserved slots for future
+        works — their photos and product pages don't exist yet.
+        When a piece is ready: point the link at its page under
+        items/<category>/ and replace the .image-placeholder div with an <img>.
+      -->
       <section class="exhibit-grid">
         <!-- Piece 01 -->
         <div class="exhibit-item reveal">
@@ -65,6 +76,7 @@
             </div>
             <div class="item-info">
               <span class="item-number">01</span>
+              <!-- "Interior Monolith" — a single dominant standing form -->
               <h2>Interior Monolith</h2>
             </div>
           </a>
@@ -79,6 +91,7 @@
             </div>
             <div class="item-info">
               <span class="item-number">02</span>
+              <!-- "Negative Structure" — a shape defined by absence/void -->
               <h2>Negative Structure</h2>
             </div>
           </a>
@@ -93,20 +106,22 @@
             </div>
             <div class="item-info">
               <span class="item-number">03</span>
+              <!-- "Lupanar" — a historical/mythic reference piece -->
               <h2>Lupanar</h2>
             </div>
           </a>
         </div>
 
-        <!-- Piece 04 (piece 2 drops more, piece 4 drops less) -->
+        <!-- Piece 04 -->
         <div class="exhibit-item reveal">
-          <a href="items/jewelry/metal-script-04.html">
+          <a href="#">
             <div class="image-wrapper">
               <!-- Placeholder — replace with your photo -->
               <div class="image-placeholder h-520"></div>
             </div>
             <div class="item-info">
               <span class="item-number">04</span>
+              <!-- "Altars of Ashes" — a ritual object referencing Mount Lykaion -->
               <h2>Altars of Ashes (Mount Lykaion)</h2>
             </div>
           </a>

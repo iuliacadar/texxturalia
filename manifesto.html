@@ -42,6 +42,23 @@
     </nav>
 
     <main class="manifesto-container">
+      <!--
+        WHY <article> HERE (AND NOT <div>, LIKE THE EXHIBIT/PORTAL CARDS):
+        Every teaser card on the home page and exhibit pages (index.html's
+        .portal-item, textiles/jewelry/decor/guests.html's .exhibit-item)
+        uses a plain <div> — see docs/DECISIONS.md, entry
+        "semantic-elements-div-for-teaser-cards". Those cards are pointers:
+        an image, a title, a link out to somewhere else. Removed from the
+        page, a teaser card means nothing on its own.
+        This manifesto essay is the opposite case. It's not a pointer to
+        content elsewhere — it IS the content. Pull <article class="
+        manifesto-content"> out of this page, drop it into an RSS feed or a
+        blog aggregator, and it would still make complete sense read in
+        isolation: a title, a full argument, a signature. That's exactly
+        the test <article> is meant for ("could this stand alone?"), which
+        is why it's the right element here even though <div> is the right
+        element for the teaser cards elsewhere in the same project.
+      -->
       <article class="manifesto-content">
         <header class="manifesto-header">
           <span class="eyebrow">The Texxturalia Gnosis</span>

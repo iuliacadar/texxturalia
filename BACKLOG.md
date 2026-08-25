@@ -41,6 +41,16 @@ and beautiful — but it does not scale to a hundred pieces. The long answer to
       `guests.html`) still use placeholder boxes. When real photos arrive,
       replace the `.image-placeholder` divs with `<img>` tags and let them
       inherit the full-photo display.
+- [ ] **More guest artists** (`guests.html` / `ro/guests.html`) — to add a new
+      invited artist, copy the existing `.exhibit-item` block (image wrapper +
+      item-info with number, name, credit) and update its contents. The inline
+      "add more guests here" comment was removed from the RO page on
+      2026-08-25; intent preserved here.
+- [ ] **Product page TODOs** — the four `metal-script-*` product pages
+      (`items/jewelry/` and `ro/items/jewelry/`) previously carried inline
+      TODO comments: replace the `.image-placeholder` div with an `<img>`
+      tag after the photo shoot. Same trigger as "Curated galleries" above.
+      (TODOs removed from production HTML on 2026-08-25; intent preserved here.)
 - [ ] **Consistent framing** — decide one aspect ratio for all product photos
       (the collection grid uses 4:5). Shoot or crop to match, so the archive
       reads as one room, not a patchwork.
