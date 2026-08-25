@@ -1,73 +1,136 @@
-/* --- 1. RESET & FUNDAL TELURIC --- */
+/* ============================================================
+   TEXXTURALIA — STYLE.CSS
+   A la carte: each group teaches one concept.
+   Read top-to-bottom; each section builds on the previous.
+
+   HOW TO READ THIS FILE
+   ─────────────────────
+   1. Start at GROUP 0: the reset and base rules that every
+      other rule inherits from.
+   2. Each GROUP is a self-contained lesson. The comment at
+      its top tells you what concept it demonstrates.
+   3. Within each group, selectors are ordered from general
+      (container) to specific (child, state, pseudo-element).
+   4. GROUP 13 (mobile) is always last — media queries
+      override earlier rules by design.
+   5. The APPENDIX at the very bottom holds legacy/roadmap
+      notes that must never affect the cascade.
+
+   CASCADE ARCHITECTURE
+   ────────────────────
+   Reset → Body/Base → Shared Components → Page Sections →
+   Theme Classes → Product Detail → Footer → Contact →
+   404 → Mobile Media Queries → Appendix
+
+   Specificity increases as you go down. A rule lower in the
+   file wins over an equal-specificity rule higher up — this
+   is the CSS cascade in action. We rely on source order,
+   NOT !important, for nearly everything.
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   GROUP 0 — RESET & FOUNDATION
+   What every page inherits before anything else.
+   Learn:
+   - Universal selector (*) for reset: applies to EVERY element.
+   - box-sizing: border-box — padding/border are INSIDE the
+     declared width, not added to it. This is the most
+     important single line in the file.
+   - h2 reset: removing default margins so headings start
+     from a clean baseline.
+   - body: the canvas. Font family, weight, background,
+     text color, and overflow-x (prevents horizontal scroll
+     from images that are slightly too wide).
+   ---------------------------------------------------------- */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* h2 reset: every page uses h2 for item titles, so we
+   remove the browser's default margin/padding and set
+   font-weight to normal here. Individual pages override
+   font-family, size, and style as needed. */
 h2 {
   margin: 0;
   padding: 0;
-  font-weight: normal; /* Esențial pentru finețea Texxturalia */
+  font-weight: normal;
 }
 
 body {
   font-family: "Montserrat", sans-serif;
-  font-weight: 200; /* Foarte subțire, minimalist */
+  font-weight: 200; /* Ultra-light — the brand's minimalist voice */
   letter-spacing: 0.05em;
   line-height: 1.6;
-  /* background-color: #fdfdfd; Un alb "ceramic" curat */
-  background-color: #f2f0eb; /*Un alb cald, patinatcu tentă de "Os vechi" pentru vibe-ul Moult */
-  color: #2c2c2c; /* Culoarea "Oxid/Antracit" - un negru mai moale decat #1a1a1a, organic */
+  /* A "ceramic white" would be #fdfdfd — cleaner but colder.
+     We choose #f2f0eb instead: warm, with a hint of aged bone
+     that supports the handmade aesthetic. */
+  background-color: #f2f0eb;
+  /* Warm charcoal, softer than pure #1a1a1a. Organic, not
+     screen-native. */
+  color: #2c2c2c;
   overflow-x: hidden;
 }
 
-/* --- 2. MENIUL: NAVBAR & LOGO (Efectul de Azot/Oxid) --- */
+/* ----------------------------------------------------------
+   GROUP 1 — SHARED COMPONENTS: NAVBAR & LOGO
+   The one component every page shares. Learn:
+   - Flexbox for layout (justify-content: space-between).
+   - Descendant selectors (.navbar a): targets links inside
+     .navbar only, not all links on the page.
+   - color: inherit — a link takes its parent's text color
+     instead of the browser default blue.
+   - display: contents — the link wrapper doesn't create its
+     own box; the logo text participates in the navbar's
+     flex layout directly.
+   - Transitions: opacity and color change smoothly on hover.
+   ---------------------------------------------------------- */
+
+/* Navbar: flex container with logo on the left and menu on
+   the right. Background matches body so the navbar feels
+   like a layer ON the page, not a separate band. */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 40px 5%; */
-  /* background-color: #fdfdfd; */
-  background-color: #f2f0eb; /* Nuanta de os */
-  /* padding: 50px 5%; */
-  padding: 50px 4%; /*Am crescut padding-ul vertical și am scăzut lateralul */
+  background-color: #f2f0eb;
+  padding: 50px 4%;
 }
 
-/* --- Stil Universal pentru Link-urile din Navbar --- */
+/* Descendant selector: .navbar a targets EVERY <a> inside
+   .navbar — both the logo link and the menu links. This is
+   different from .navbar > a (child selector), which would
+   only target direct children. We use the broader descendant
+   selector because the structure is flat. */
 .navbar a {
-  /*  Ținta - Îi spune browserului: „Caută toate link-urile (<a>) care se află în interiorul barei de navigație (.navbar)”. Asta include atât Logo-ul (pe care tocmai l-ai transformat în link), cât și link-urile din meniu (Layers, Scripts etc.). */
-  text-decoration: none; /* Șterge linia de sub text */
-  color: inherit; /* Face link-ul să preia culoarea textului de branding */
-  display: contents; /* Se asigură că link-ul nu strică alinierea logo-ului */
-  /* Folosim color: inherit (Preluarea culorii de la "părinte") și text-decoration: none (Eliminarea stilului standard) pentru a face link-urile de navigare invizibile din punct de vedere tehnic, păstrând puritatea tipografică a brandului. */
+  text-decoration: none; /* Remove the browser's default underline */
+  color: inherit; /* Inherit the navbar's text color — links look like text */
+  display: contents; /* The <a> doesn't generate its own box; its text
+                         participates in the navbar's flex layout */
+  transition: opacity 0.4s, color 0.3s ease;
 }
 
-/* Logo-ul: Puternic, dar simplu */
+/* Logo: small, letter-spaced, all-caps aesthetic. We use
+   font-weight 300 (light) and a warm dark gray (#333)
+   instead of pure black — softer, more like engraved metal. */
 .logo {
-  /* font-size: 1rem; */
-  font-size: 0.9rem; /* Un pic mai mic pentru echilibru */
+  font-size: 0.9rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
-  /* letter-spacing: 0.8em;  */
-  letter-spacing: 0.7em; /* Spațiere generoasă, specifică brandurilor de lux */
-  color: #333; /* Culoare ușor desaturată, ca metalul vechi */
-  white-space: nowrap;
+  letter-spacing: 0.7em; /* Wide tracking — a luxury brand signature */
+  color: #333;
+  white-space: nowrap; /* Prevent the logo from wrapping on small screens */
 }
 
-/* 
-   ==========================================================================
-   FAZA VIITOARE: JAVASCRIPT & INTERACTIVITATE
-   Aici voi defini stările .active pentru meniul hamburger.
-   ==========================================================================
-*/
-/* .nav-links.active { transform: translateX(0); } */
-
+/* Menu links: smaller, lighter, uppercase. Opacity 0.7 gives
+   them a secondary presence; hover brings them to full opacity
+   and black — the menu "brightens" when you interact. */
 .nav-links {
   display: flex;
   list-style: none;
-  /* gap: 30px; */
-  gap: 20px; /* Spatiul dintre cuvinte. TODO: Redu la 15px daca inca e prea mare */
+  gap: 20px;
   align-items: center;
 }
 
@@ -76,14 +139,11 @@ body {
   font-weight: 300;
   text-decoration: none;
   color: #666;
-  /* font-size: 0.7rem; */
-  font-size: 0.65rem; /* Micșorăm un pic fontul pentru a lăsa spațiul să respire */
+  font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 3px;
   opacity: 0.7;
-  transition:
-    opacity 0.4s,
-    color 0.3s ease;
+  transition: opacity 0.4s, color 0.3s ease;
 }
 
 .nav-links a:hover {
@@ -91,114 +151,131 @@ body {
   opacity: 1;
 }
 
-/* În CSS, ordinea contează.
-Regula pentru .lang-select este pusă după regulile generale pentru .nav-links a, astfel încât linia de oxid să aibă „ultima variantă” de stilizare.
- */
+/* Language selector: a thin vertical rule separates it from
+   the menu links. The rule is a visual "stitch" — a design
+   detail that references the handmade textile aesthetic.
+   This rule comes AFTER .nav-links a so that the language
+   link's opacity and color can be overridden specifically. */
 .lang-select {
-  /* margin-left: 15px; Spațiu suplimentar față de link-urile anterioare */
-  /* padding-left: 15px; */
-  /* border-left: 1px solid #eee; O linie foarte fină, ca un ac de argint */
-  margin-left: 30px; /* Spațiu între Manifesto/Creed și butonul RO */
-  padding-left: 20px; /* Spațiu între linie și textul RO */
-  border-left: 1px solid #c5c5c5; /* "Acul de argint/oxid" - linia fină */
-  height: 12px; /* Îi dăm o înălțime fixă ca să nu fie cât tot rândul */
-  display: flex; /* Ajută la centrarea verticală a liniei */
+  margin-left: 30px;
+  padding-left: 20px;
+  border-left: 1px solid #c5c5c5; /* "Silver/oxide needle" — a thin line */
+  height: 12px;
+  display: flex;
   align-items: center;
 }
 
+/* The language link inside .lang-select: full opacity (more
+   visible than the menu links) and slightly heavier weight. */
 .lang-select a {
-  font-weight: 400; /* Puțin mai vizibil pentru a fi ușor de găsit */
-  opacity: 1; /* Mai puțin transparent decât restul meniului */
+  font-weight: 400;
+  opacity: 1;
 }
 
-/* --- 3. HERO & TITLURI (Contrast Intelectual) --- */
+/* ----------------------------------------------------------
+   GROUP 2 — HERO & TYPOGRAPHY
+   The home page hero: how Cormorant Garamond Italic is used
+   for monumentality. Learn:
+   - font-family switching per element: body uses Montserrat
+     (sans-serif), but the hero uses Cormorant Garamond
+     (serif) — a deliberate contrast between the "voice" of
+     the site and the "voice" of the manifesto.
+   - max-width for readability: the hero paragraph is capped
+     at 650px so lines don't get too long to read comfortably.
+   - Centering: text-align: center + margin: 0 auto on a
+     block element centers it horizontally.
+   ---------------------------------------------------------- */
+
+/* Hero section: generous padding top and bottom creates the
+   "abbey space" around the content — the page breathes before
+   and after the words. */
 .hero {
-  padding: 60px 5% 100px; /* Spațiul „abisului” în jurul conținutului */
+  padding: 60px 5% 100px;
   text-align: center;
 }
 
+/* Hero h1: the largest text on the page. Cormorant Garamond
+   Italic at 2.5rem gives it a carved-in-stone presence.
+   font-weight 300 keeps it elegant, not heavy. */
 .hero h1 {
-  /* Modificat din h2 în h1 conform deciziei tale */
   font-family: "Cormorant Garamond", serif;
   font-size: 2.5rem;
   font-weight: 300;
   font-style: italic;
-  color: #2c2c2c; /* Imprimat pe pergament */
+  color: #2c2c2c;
   margin-bottom: 20px;
-  /* animation: fadeInUp 1.2s forwards; */
-  /* padding: 60px 5% 100px; */
-  /* Fără padding aici, ca să nu deplasăm textul ciudat */
   text-align: center;
 }
 
-/* .hero h2 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    margin-bottom: 20px;
-    font-family: 'Cormorant Garamond', serif;  Pentru un contrast intelectual 
-    font-style: italic;
-    letter-spacing: 0.02em;
-} */
-
-/* Ce înseamnă .hero p {}?
-In CSS, acesta este un selector descendent. Îi spune browserului:
-„Caută toate paragrafele (<p>) care se află în interiorul unui element cu clasa .hero și aplică-le doar lor aceste reguli.”
-În contextul tău, acest selector stilizează textul manifest (cel cu „Betwixt and between...”) care apare imediat sub titlul principal. */
-/* .hero p { 
-    font-size: 0.9rem;
-    color: #888;
-    max-width: 600px;
-    margin: 0 auto 60px;
-    letter-spacing: 1px;
-} */
+/* Hero paragraph: the manifesto text. Switches back to
+   Cormorant Garamond Italic (serif) for literary tone,
+   slightly larger than body text, with generous line-height
+   for reading comfort. max-width: 650px keeps line length
+   in the readable range. */
 .hero p {
-  font-family: "Cormorant Garamond", serif; /*Trecem manifestul pe Serif */
+  font-family: "Cormorant Garamond", serif;
   font-style: italic;
-  font-size: 1.1rem; /* Creștem puțin pentru lizibilitate pe Serif */
-  color: #555; /* Un gri mai dens */
+  font-size: 1.1rem;
+  color: #555;
   max-width: 650px;
   margin: 0 auto 60px;
   letter-spacing: 0.01em;
   line-height: 1.7;
 }
 
-/* --- 4. GRILA DE PORTALURI (Umbre Gnostice & Azot) --- */
+/* ----------------------------------------------------------
+   GROUP 3 — HOME PAGE: PORTAL GRID
+   The 4-door grid on index.html. Learn:
+   - CSS Grid with auto-fit + minmax: the grid creates as many
+     columns as fit, each at least 280px wide, sharing remaining
+     space equally. This is the "responsive grid without media
+     queries" pattern.
+   - position: relative on the item: needed so the ::after
+     pseudo-element (the hover overlay) positions correctly.
+   - ::after pseudo-element: adds a transparent layer on top
+     of the item that darkens on hover — a "veil" effect.
+   - transition: all — animates every changed property together.
+   ---------------------------------------------------------- */
+
+/* Portal grid: 4 cards in a responsive grid. auto-fit creates
+   columns that wrap automatically; minmax(280px, 1fr) ensures
+   each column is at least 280px and takes equal share of
+   remaining space. max-width: 1300px keeps the grid from
+   stretching too wide on large screens. */
 .portal-grid {
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); */
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(280px, 1fr)
-  ); /* Am crescut lățimea minimă de la 240px la 280px */
-  /* gap: 15px; */
-  gap: 25px; /* Spațiu mai mare între blocuri */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
   max-width: 1300px;
   margin: 0 auto;
   margin-top: 60px;
 }
 
+/* Portal item: the card container. position: relative is
+   required for the ::after overlay to position absolutely
+   within it. height: 450px gives each card a uniform
+   portrait proportion. */
 .portal-item {
   position: relative;
   height: 450px;
-  background-color: #dcd7cf; /* Nuanța de Azot/Ciment */
-  /* background-color: #f5f5f5; Culoare de bază până pui pozele */
+  background-color: #dcd7cf; /* Warm stone — the "waiting" color for images not yet placed */
   overflow: hidden;
-  /* transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); */
   transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
-  /* border: 1px solid #eee; */
-  border: none; /* Scoatem bordura subțire pentru a lăsa forma să plutească */
-  /* box-shadow: 0 20px 40px rgba(0,0,0,0.05); */
-  box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.03); /* Profunzimea vidului */
+  border: none;
+  box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.03);
 }
 
+/* Hover: lift the card slightly (translateY -8px) and deepen
+   the shadow — a subtle "breathing" interaction. */
 .portal-item:hover {
-  /* transform: scale(1.02); Efect discret de mărire */
   transform: translateY(-8px);
-  background-color: #d4cfc5; /* "Incandescență" telurică la atingere */
+  background-color: #d4cfc5;
   box-shadow: 30px 30px 80px rgba(0, 0, 0, 0.07);
 }
 
-/* Efect de Left Hand Path la hover - întunecare discretă */
+/* ::after pseudo-element: a transparent overlay on top of
+   the card. On hover, it darkens slightly — a "veil" that
+   suggests depth without obscuring the image. */
 .portal-item::after {
   content: "";
   position: absolute;
@@ -211,9 +288,12 @@ In CSS, acesta este un selector descendent. Îi spune browserului:
 }
 
 .portal-item:hover::after {
-  background: rgba(0, 0, 0, 0.05); /* O „ceață” fină peste imagine */
+  background: rgba(0, 0, 0, 0.05);
 }
 
+/* Button inside the portal card: fills the entire card area,
+   centered both vertically and horizontally. z-index: 2 ensures
+   the button sits above the ::after overlay. */
 .btn-primary {
   display: flex;
   flex-direction: column;
@@ -226,82 +306,95 @@ In CSS, acesta este un selector descendent. Îi spune browserului:
   position: relative;
 }
 
-.anchor-label {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  /* letter-spacing: 4px; */
-  letter-spacing: 0.3em;
-  margin-bottom: 12px;
-  opacity: 0.5;
-}
+/* ----------------------------------------------------------
+   GROUP 4 — ANIMATION: FADE-IN (KEYFRAMES) vs REVEAL (JS)
+   Two approaches side by side. Learn:
+   - @keyframes + animation: automatic on page load. The
+     browser runs the animation without any JavaScript.
+   - .reveal class + IntersectionObserver: on scroll. The
+     element starts hidden (opacity: 0, translateY(30px))
+     and becomes visible when JavaScript adds .active.
+   - Why both exist: fadeInUp is for elements you always want
+     to animate on load (hero, above-the-fold); .reveal is
+     for elements that animate as the user scrolls to them.
+   ---------------------------------------------------------- */
 
-.concept-label {
-  font-size: 1.2rem;
-  font-weight: 300;
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  letter-spacing: 0.02em;
-}
-
-/* --- 5. ANIMAȚII (FADE-IN) ---
-Acest bloc reprezintă o metodă de animație „old school” (automată), care funcționează diferit față de sistemul de Reveal (la scroll) pe care l-am construit cu JavaScript.
-Iată rolul și diferența:
-1. Ce face tehnic?
-Este o „rețetă” de mișcare numită fadeInUp. Ea spune browserului: „Pornește de la invizibil și 30px mai jos, și termină la vizibil și poziția inițială.”
-2. Diferența față de sistemul nou (.reveal)
-@keyframes fadeInUp: Este o animație care pornește imediat ce se încarcă pagina. Nu așteaptă vizitatorul să ajungă la ea prin scroll. Se folosește de obicei pentru elemente care sunt „deasupra pliului” (cele care se văd primele, cum e titlul principal).
-Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” și se declanșează doar când vizitatorul ajunge în dreptul elementului.
+/* @keyframes fadeInUp: defines the animation "recipe." From
+   invisible and 30px lower, to fully visible at the original
+   position. This is a self-contained animation definition —
+   it doesn't apply to anything until something references it
+   with animation: fadeInUp. */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-} */
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-/* .hero-content h2 { animation: fadeInUp 1.2s forwards; }
-.hero-content p { animation: fadeInUp 1.2s 0.3s forwards; opacity: 0; }
-.portal-grid { animation: fadeInUp 1.2s 0.6s forwards; opacity: 0; } */
-
-/* --- 5.FENOMENOLOGIA APARITIEI. DINAMICA APARIȚIEI (Reveal System)  --- */
-/* Starea primordială: elementul este în abis (invizibil și coborât) */
+/* .reveal: the starting state for scroll-triggered animation.
+   The element is invisible and shifted down 30px. transition
+   animates the change when .active is added. visibility: hidden
+   ensures screen readers skip it while it's off-screen. */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
   transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
-  visibility: hidden; /* Adăugăm asta pentru siguranță */
+  visibility: hidden;
 }
 
+/* .reveal.active: the "revealed" state. !important is used here
+   because JavaScript toggles this class and we want it to win
+   over any other opacity/transform rule. In a well-structured
+   cascade you rarely need !important; this is one of the few
+   cases where it's justified (JS-driven state change). */
 .reveal.active {
   opacity: 1 !important;
   transform: translateY(0) !important;
   visibility: visible !important;
 }
 
-/* --- 6. VITRINELE DE EXPONATE (Jewelry, Textiles, Decor) --- */
+/* ----------------------------------------------------------
+   GROUP 5 — EXHIBIT PAGES: THE IKEBANA GRID
+   Every showcase page (textiles/jewelry/decor/guests) shares
+   this. Learn:
+   - Asymmetric grid (1.2fr 0.8fr): the first column is wider
+     than the second, creating an ikebana-like asymmetry.
+   - nth-child selectors for rhythm: even items get a top
+     margin offset, creating a staggered "falling" rhythm.
+   - image-wrapper as a virtual frame: background color creates
+     the "mat" around images not yet placed.
+   - item-info hierarchy: number → title → artist credit.
+   ---------------------------------------------------------- */
+
+/* Exhibit container: the page wrapper for vitrine pages.
+   Max-width 1400px centers the content; padding creates
+   breathing room on the sides. */
 .exhibit-container {
   padding: 100px 8%;
   max-width: 1400px;
   margin: 0 auto;
 }
 
+/* Exhibit header: the title block at the top of a vitrine
+   page. Max-width 500px keeps the title from stretching too
+   wide on large screens — titles read best at book width. */
 .exhibit-header {
   margin-bottom: 120px;
   max-width: 500px;
-  /* animation: fadeInUp 1.2s forwards; Refolosim animația de la index */
 }
 
 .exhibit-header h1 {
   font-family: "Cormorant Garamond", serif;
   line-height: 1.1;
-  text-transform: none; /* Păstrează italo-clasicul Cormorant */
-  font-size: 4rem; /* Monumental */
+  text-transform: none; /* Keep the italic-classic Cormorant look */
+  font-size: 4rem; /* Monumental — the largest heading on vitrine pages */
   font-weight: 300;
   font-style: italic;
-  color: #2c2c2c; /* Oxid moale */
+  color: #2c2c2c;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -310,59 +403,61 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  opacity: 0.6; /* Îl face să pară o notă de subsol documentară */
+  opacity: 0.6; /* Subtle, like a documentary footnote */
 }
 
-/* Aici inserăm elementele noi de finisaj ritualic */
+/* Header divider: a thin 80px line between the title and
+   description. margin: 30px auto centers it — auto on the
+   left/right margins centers a block element with a fixed width. */
 .header-divider {
-  /*linia dintre titlu și descriere, „firul” care separă conceptele.*/
   width: 80px;
   height: 1px;
   background-color: #c5c5c5;
-  margin: 30px auto; /* AUTO pe lateral este cheia centrării liniei */
+  margin: 30px auto;
   opacity: 0.5;
 }
 
+/* Header description: centered, compact (max-width 450px),
+   semi-transparent. The narrow width forces a line break
+   after the first sentence — a deliberate typographic choice. */
 .header-description {
-  margin: 0 auto; /* Centrează paragraful sub linie */
-  /* max-width: 500px;        Îl păstrăm compact pentru lizibilitate */
-  max-width: 450px; /* Această lățime forțează ruperea rândului după prima propoziție */
+  margin: 0 auto;
+  max-width: 450px;
   text-align: center;
   opacity: 0.7;
   font-size: 0.85rem;
-  line-height: 1.6; /* Oferă aer între rânduri */
+  line-height: 1.6;
   color: #666;
   letter-spacing: 0.05em;
   font-family: "Montserrat", sans-serif;
 }
 
-/* Grila Asimetrică Ikebana */
+/* Ikebana grid: asymmetric 1.2fr / 0.8fr columns. The wider
+   first column holds the primary piece; the narrower second
+   column holds the secondary piece, staggered lower. gap:
+   150px 80px gives generous horizontal and vertical breathing
+   room — this is a gallery, not a marketplace. */
 .exhibit-grid {
-  /*grila de produse din vitrina*/
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 150px 80px;
   align-items: start;
-  /* animation: fadeInUp 1.2s 0.3s forwards; */
-  /* opacity: 0;  Problema: Dubla ascundere.
-    În cod exista două reguli care „bat” în același loc:
-        Regula .reveal: Setează opacity: 0 și visibility: hidden.
-        Regula .exhibit-grid: Setează și ea opacity: 0.
-    Deoarece elementul  de grid (<section class="exhibit-grid">) are opacity: 0 fixat prin CSS, chiar dacă JavaScript-ul activează elementele din interior, containerul lor principal rămâne invizibil.
-    Soluția: Curățarea „Abisului” în CSS. Trebuie să elimin opacitatea de pe containerele mari și să o las doar pe clasa .reveal. Modifică fișierul style.css astfel: sterge opacity: 0 din .exhibit-grid
-    Daacă și în index.html este vreo regulă opacity: 0 pe .portal-grid trebuie sa o șterg. */
 }
 
-/* ASIMETRIA: Piesa a doua (pară) este împinsă mai jos.
-   Doar în grila de vitrină (exhibit-grid); Colectia nu foloseste offset-uri. */
+/* Stagger rhythm: even-numbered items get a top offset,
+   pushing them lower in the grid. nth-child(even) is a
+   general rule; the more specific nth-child(2) and (4)
+   come AFTER to refine the exact offset for those items.
+   Order matters: (2) and (4) override (even) because they
+   come later in the cascade with equal specificity. */
 .exhibit-grid .exhibit-item:nth-child(even) {
   margin-top: 200px;
 }
 
-/* Piesa a doua cade mult, piesa a patra cade mai putin */
 .exhibit-grid .exhibit-item:nth-child(2) {
   margin-top: 250px;
 }
+
 .exhibit-grid .exhibit-item:nth-child(4) {
   margin-top: 120px;
 }
@@ -372,19 +467,23 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   color: inherit;
 }
 
+/* Image wrapper: the "mat" around each piece. Background color
+   (#dcd7cf — warm stone) creates the frame for images not yet
+   placed. Padding creates the mat width. overflow: hidden
+   ensures images don't escape the frame. */
 .image-wrapper {
-  /* background-color: #efeeea;  */
-  background-color: #dcd7cf; /* Fundalul imaginilor să pară de azot/piatră sau ciment umed */
+  background-color: #dcd7cf;
   border: none;
   padding: 60px;
   margin-bottom: 25px;
   overflow: hidden;
-  box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.03); /* O umbră difuză, care sugerează profunzimea vidului */
+  box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.03);
   transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-/* Placeholder pentru fotografii care încă nu au fost adăugate.
-   Înlocuiește div-urile inline de tip <div style="height: ...">. */
+/* Image placeholder: used when a real image isn't available yet.
+   Different height variants (tall, medium, wide, short, etc.)
+   let the grid maintain its rhythm even without actual photos. */
 .image-placeholder {
   display: block;
   background-color: #dcd7cf;
@@ -401,10 +500,15 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 .image-placeholder.h-520 { height: 520px; }
 .image-placeholder.h-480 { height: 480px; }
 
+/* Hover: the image wrapper slightly shrinks (scale 0.98) —
+   a subtle "drawing inward" gesture, opposite to the portal
+   card which lifts up. Different pages, different gestures. */
 .exhibit-item:hover .image-wrapper {
   transform: scale(0.98);
 }
 
+/* Item info: flex row with the number, title, and artist
+   credit aligned at the baseline. gap: 10px separates them. */
 .item-info {
   display: flex;
   align-items: baseline;
@@ -416,18 +520,9 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   color: #999;
 }
 
-/* .item-info h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-} */
-
-/* SCHIMBĂ: din .item-info h3 în .item-info h2 */
 .item-info h2 {
   font-family: "Montserrat", sans-serif;
-  font-size: 1.1rem; /* Dimensiune mică, elegantă */
+  font-size: 1.1rem;
   font-weight: 300;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -435,18 +530,32 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   color: #2c2c2c;
 }
 
-/* Creditul pentru artistul invitat (Universul Actaeon) */
+/* Artist credit: very small (0.6rem), uppercase, gray —
+   documentary presence, not competing with the piece title. */
 .artist-credit {
-  font-size: 0.6rem; /* Foarte mic, documentar */
+  font-size: 0.6rem;
   text-transform: uppercase;
-  color: #999; /* Gri șters, pentru a nu concura cu titlul piesei */
-  margin-top: 4px; /* Distanță fină sub H3 */
+  color: #999;
+  margin-top: 4px;
   letter-spacing: 2px;
   opacity: 0.7;
-  display: block; /* Se asigură că stă pe rândul lui sub titlu */
+  display: block;
 }
 
-/* --- THE COLLECTION (Arhiva Completa) --- */
+/* ----------------------------------------------------------
+   GROUP 6 — THE COLLECTION: FILTER & ARCHIVE GRID
+   The collection.html page: filter buttons + data attributes,
+   auto-fill grid, aspect-ratio for uniform images.
+   Learn:
+   - data- attribute selectors: JS adds/removes .active on
+     filter buttons; CSS styles the active state.
+   - auto-fill grid: like auto-fit but keeps empty columns
+     (better for a fixed archive layout).
+   - aspect-ratio: 4/5 forces all images to the same portrait
+     proportion regardless of their native dimensions.
+   - object-fit: contain: the image fills the frame without
+     cropping — important for artwork where every detail matters.
+   ---------------------------------------------------------- */
 
 .collection-container {
   padding: 100px 8%;
@@ -518,8 +627,10 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   align-items: start;
 }
 
-/* Imaginilele în grila — fotografia se afișează întregă, nu se ştirează.
-   Ratio fixă (4:5) + contain = totul firul de fotografia este vizibil. */
+/* Collection images use a fixed 4:5 aspect ratio — every
+   piece in the archive has the same frame, creating visual
+   consistency across the grid. object-fit: contain ensures
+   the full artwork is visible without cropping. */
 .collection-grid .image-wrapper {
   aspect-ratio: 4 / 5;
   padding: 0;
@@ -533,7 +644,18 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   display: block;
 }
 
-/* --- 7. THE CREED (Eseu Tipografic / Pagina de Text) --- */
+/* ----------------------------------------------------------
+   GROUP 7 — THE CREED: MANIFESTO PAGE
+   The essay page. Learn:
+   - Justified text (text-align: justify) for monumental blocks
+     — the publisher standard for long-form prose.
+   - max-width: 700px on the content column — the "publisher's
+     golden width" for reading comfort (about 12-14 words per line).
+   - Lead paragraph as a typographic hero: 2rem Cormorant Italic
+     sets the tone before the body text begins.
+   - Signature alignment: right-aligned, italic — a personal
+     mark at the end of the essay.
+   ---------------------------------------------------------- */
 
 .manifesto-container {
   padding: 120px 10%;
@@ -542,11 +664,10 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 }
 
 .manifesto-content {
-  max-width: 700px; /* Lățime optimă pentru citit, ca într-o carte */
+  max-width: 700px;
   text-align: left;
 }
 
-/* Eyebrow-ul (Eticheta mică de sus) */
 .eyebrow {
   display: block;
   text-align: center;
@@ -559,7 +680,7 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 
 .manifesto-header h1 {
   font-family: "Cormorant Garamond", serif;
-  font-size: 4.5rem; /* Mai mare, ca o inscripție în piatră */
+  font-size: 4.5rem;
   font-weight: 300;
   font-style: italic;
   line-height: 1.1;
@@ -573,7 +694,7 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   line-height: 1.4;
   font-style: italic;
   margin-bottom: 60px;
-  color: #2c2c2c; /* Oxid */
+  color: #2c2c2c;
   text-align: center;
 }
 
@@ -584,58 +705,88 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   line-height: 1.8;
   margin-bottom: 40px;
   color: #2c2c2c;
-  text-align: justify; /* Monumentalitate */
+  text-align: justify;
 }
 
 .manifesto-signature {
   margin-top: 100px;
-  text-align: right; /* Asimetrie la final */
+  text-align: right;
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
   font-size: 1.4rem;
   opacity: 0.8;
 }
 
-/* --- 8. TEMATICI CROMATICE (Micro-Ambiante) --- */
+/* ----------------------------------------------------------
+   GROUP 8 — THEME CLASSES: PER-DOMAIN CHROMATIC AMBIANCES
+   One place to recolor an entire universe. Learn:
+   - How a parent class (.jewelry-theme) scopes child selectors:
+     .jewelry-theme .image-wrapper targets ONLY image wrappers
+     inside a jewelry-themed page — other pages are unaffected.
+   - Hover states per theme: each universe has its own hover
+     color, creating a distinct "personality" for each gallery.
+   - Why this is better than scattering color rules: all theme
+     overrides live in one place. Add a new universe? Add two
+     rules here. Don't touch anything else.
+   ---------------------------------------------------------- */
 
-/* 1. Universul Arachne (In/Bumbac) - Reacție de "Lumină" */
+/* Textile theme (Arachne universe): the image wrapper starts
+   warm and lightens on hover — like linen catching sunlight. */
 .textile-theme .image-wrapper {
   background-color: #f2f0eb;
 }
 .textile-theme .image-wrapper:hover {
-  background-color: #f9f8f6; /* Se albește discret, ca inul sub soare */
+  background-color: #f9f8f6;
 }
 
-/* 2. Universul Corvus (Cupru/Metal) - Reacție de "Căldură" */
+/* Jewelry theme (Corvus universe): the image wrapper starts
+   warm-toned and deepens on hover — like metal cooling. */
 .jewelry-theme .image-wrapper {
   background-color: #dfddd8;
 }
 .jewelry-theme .image-wrapper:hover {
-  background-color: #d4cfc5; /* Se "încinge" discret la atingere */
+  background-color: #d4cfc5;
 }
 
-/* 3. Universul Leto (Piatră/Beton) - Reacție de "Umiditate" */
+/* Decor theme (Leto universe): the image wrapper starts neutral
+   and darkens on hover — like stone absorbing moisture. */
 .decor-theme .image-wrapper {
   background-color: #e8e8e8;
 }
 .decor-theme .image-wrapper:hover {
-  background-color: #dcdcdc; /* Se întunecă ușor, ca piatra udă */
+  background-color: #dcdcdc;
 }
 
-/* 4. Universul Actaeon (Galerie Neutră) - Reacție de "Claritate" */
+/* Guests theme (Actaeon universe): the image wrapper starts
+   light and becomes pure white on hover — maximum contrast,
+   a neutral gallery for invited artists. */
 .guests-theme .image-wrapper {
   background-color: #f7f7f7;
 }
 .guests-theme .image-wrapper:hover {
-  background-color: #ffffff; /* Devine alb pur, pentru contrast maxim */
+  background-color: #ffffff;
 }
 
-/* --- 9. FIȘA DE EXPONAT (Product Detail) --- */
+/* ----------------------------------------------------------
+   GROUP 9 — PRODUCT DETAIL PAGE: SPLIT-SCREEN LAYOUT
+   The /items/ pages: sticky image left, text right.
+   Learn:
+   - position: sticky: the image column stays in view while
+     the user scrolls through the text — the piece is always
+     visible as you read about it.
+   - calc(100vh - 300px): the gallery height is the viewport
+     minus the space taken by navbar, thumbnails, and breathing
+     room below. This is a "measured" value, not arbitrary.
+   - min-height: 420px: on small screens the gallery doesn't
+     collapse below a readable size.
+   - gallery thumb swapper: click a thumbnail → it gets .is-active
+     (border turns dark) → JavaScript swaps the main image.
+   - Horizontal scroll snap: the thumb strip scrolls sideways
+     with snap points — native browser scrolling, no JS needed.
+   ---------------------------------------------------------- */
 
 .product-detail-container {
   display: grid;
-  /* minmax(0, 1fr): coloanele pot scădea sub lățimea intrinsecă a imaginii,
-     altfel coloana vizualului se umflă la 1612px și împinge textul în afara ecranului */
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   max-width: 1100px;
   margin: 0 auto;
@@ -645,13 +796,10 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 }
 
 .product-visual {
-  position: sticky; /* Imaginea rămâne pe loc în timp ce dăm scroll la text */
+  position: sticky;
   top: 20px;
 }
 
-/* Galeria de produs — vizionariu principal + fir de piculi imaginuri.
-   Firul de piculi imagini este un scroller orizontal (swipe) și poată
-   tene până a 20+ imagini, derulându-se lateral. */
 .gallery {
   display: flex;
   flex-direction: column;
@@ -662,12 +810,8 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   background-color: #dcd7cf;
   width: 100%;
   overflow: hidden;
-  /* Cadru de înălțime constantă: tot secțiunea vizuală (imagine + fir de
-     miniaturi) încape în ecran, fără scroll, cu un respiru sub ea.
-     Măsurat real: navbar ~151px + padding container 20px deasupra,
-     miniaturi 84px + gap 12px sub, + respiru ~35px ⇒ rezervăm 300px. */
   height: calc(100vh - 300px);
-  min-height: 420px; /* pe ecrane foarte mici, nu colapsăm imaginea */
+  min-height: 420px;
 }
 
 .gallery-main img {
@@ -722,7 +866,6 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   border-color: #2c2c2c;
 }
 
-/* Numele romănesc subtitlu (Orologiul apelor sub The Clock of Waters) */
 .product-ro {
   font-family: "Cormorant Garamond", serif;
   font-size: 1.2rem;
@@ -752,6 +895,7 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   font-size: 3rem;
   font-weight: 300;
   font-style: italic;
+  line-height: 1.1;
   margin-bottom: 30px;
 }
 
@@ -762,7 +906,7 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   line-height: 1.8;
   color: #444;
   margin-bottom: 50px;
-  text-align: left; /* Respectăm punctul 17 din manual */
+  text-align: left;
 }
 
 .product-specs {
@@ -783,7 +927,6 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   margin-right: 10px;
 }
 
-/* Butonul de achiziție / Contact */
 .btn-inquiry {
   display: inline-block;
   padding: 20px 40px;
@@ -801,10 +944,21 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   color: #fff;
 }
 
-/* --- 10. FOOTER (Subsolul minimalist) --- */
+/* ----------------------------------------------------------
+   GROUP 10 — FOOTER: UNIVERSAL ACROSS ALL PAGES
+   The one component at the bottom of every page.
+   Learn:
+   - border-top for separation: a thin line above the footer
+     delineates the page content from the site footer.
+   - Flex for link grouping: footer-links uses flex with gap
+     to distribute links evenly.
+   - Small-type hierarchy: 0.65rem documentary text — present
+     but not competing with the page content.
+   ---------------------------------------------------------- */
+
 .site-footer {
   padding: 80px 5% 40px;
-  border-top: 1px solid #f0f0f0; /* O linie foarte fină de separare */
+  border-top: 1px solid #f0f0f0;
   margin-top: 100px;
   text-align: center;
 }
@@ -836,10 +990,17 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   color: #000;
 }
 
-/* ==========================================
-11. CONTACT PAGE - TEXTURALIA LAYOUT (The Dialogue Hub)
-   ========================================== */
-/* --- STILIZARE CONTACT (ALINIAT CU VITRINELE) --- */
+/* ----------------------------------------------------------
+   GROUP 11 — CONTACT PAGE: DIALOGUE LAYOUT
+   The contact.html two-column layout. Learn:
+   - Grid for side-by-side columns: 1fr 1fr splits the page
+     into two equal columns.
+   - method-item as a documentary list: each contact method
+     gets a top border (the "stitch") and a label.
+   - Cormorant for contact links: the email and social links
+     use the serif font for a more personal, less mechanical
+     feel.
+   ---------------------------------------------------------- */
 
 .contact-grid {
   display: grid;
@@ -860,7 +1021,7 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 
 .method-item {
   margin-top: 40px;
-  border-top: 1px solid #c5c5c5; /* Linia de oxid */
+  border-top: 1px solid #c5c5c5;
   padding-top: 20px;
 }
 
@@ -886,15 +1047,6 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   opacity: 0.6;
 }
 
-/* .contact-note h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-style: italic;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-} */
-
-/* SCHIMBĂ: din .contact-note h3 în .contact-note h2 */
 .contact-note h2 {
   font-family: "Cormorant Garamond", serif;
   font-size: 1.6rem;
@@ -910,9 +1062,21 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   line-height: 1.8;
 }
 
-/* --- 12. PAGINA 404 (Vidul Sideral) --- */
+/* ----------------------------------------------------------
+   GROUP 12 — 404 PAGE: THE SNAPPED THREAD
+   The error page. Learn:
+   - Full-viewport centering with flexbox: height: 100vh +
+     align-items: center + justify-content: center centers
+     content both vertically and horizontally.
+   - Bilingual message hierarchy: the Romanian message is
+     slightly more prominent (higher opacity) — the primary
+     audience is Romanian-speaking.
+   - Understated border-bottom button: a "thread" linking
+     back to the homepage — minimal, not a heavy CTA button.
+   ---------------------------------------------------------- */
+
 .error-page {
-  background-color: #f2f0eb; /* Os vechi */
+  background-color: #f2f0eb;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -929,7 +1093,7 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   font-size: 5rem;
   font-weight: 100;
   letter-spacing: 0.5em;
-  color: #dcd7cf; /* Oxid pal */
+  color: #dcd7cf;
   margin-bottom: 20px;
 }
 
@@ -943,7 +1107,7 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
 }
 
 .error-message-en {
-  opacity: 0.6; /* Diminuare pentru varianta secundară */
+  opacity: 0.6;
   font-size: 1.2rem;
 }
 
@@ -969,20 +1133,36 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   opacity: 0.5;
 }
 
-/* --- 0. ADAPTARE MOBIL & SPLIT SCREEN (Întotdeauna la final) --- */
-/* ==========================================================
-    DINAMICA TELURICĂ: ADAPTARE MOBIL (Max 850px)
-   ========================================================== */
+/* ----------------------------------------------------------
+   GROUP 13 — MOBILE ADAPTATION (MEDIA QUERIES)
+   Always last. Learn:
+   - The 850px breakpoint: below this width, we switch to
+     mobile layout. This is a single breakpoint — the site
+     is designed to be simple enough to need only one.
+   - How each desktop rule is overridden for mobile:
+     grids collapse to single column, touch targets grow to
+     >=44px, headers scale down, sticky becomes static.
+   - Specificity: rules inside @media have the SAME specificity
+     as their desktop counterparts. They win because they come
+     LATER in the source order (cascade), not because media
+     queries add specificity.
+   - !important usage: a few media query rules use !important
+     to override inline styles or high-specificity desktop rules.
+     This is acceptable in media queries because the intent is
+     unambiguous: "on mobile, this MUST be different."
+   ---------------------------------------------------------- */
 
 @media (max-width: 850px) {
-  /* 1. NAVBAR: Logo stânga, Buton dreapta */
+  /* Navbar: more compact padding on mobile, positioned
+     relative so the dropdown menu can be positioned absolutely
+     beneath it. */
   .navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%; /* Spațiu mai compact pe mobil */
-    position: relative; /* Ancora pentru meniul drop-down */
+    padding: 20px 5%;
+    position: relative;
     background-color: #f2f0eb;
     z-index: 1002;
   }
@@ -991,12 +1171,14 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
     font-size: 0.85rem;
     letter-spacing: 0.4em;
     white-space: nowrap;
-    margin-bottom: 0; /* Anulăm marginea de pe desktop */
+    margin-bottom: 0;
   }
 
-  /* 2. BUTONUL HAMBURGER (The Toggle) */
+  /* Hamburger toggle: appears only on mobile (display: flex
+     !important overrides any desktop display: none). Three
+     bars stacked vertically — the universal mobile menu icon. */
   .mobile-menu-toggle {
-    display: flex !important; /* Forțăm prezența */
+    display: flex !important;
     flex-direction: column;
     gap: 6px;
     background: none;
@@ -1006,43 +1188,33 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
     z-index: 1003;
   }
 
-  /* .bar { 
-        width: 22px;
-        height: 1px; Fir subțire de argint oxidat
-        height: 2px; 
-        background-color: #2c2c2c;
-        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    } */
-
   .bar {
-    /*Optarea pentru meniul cu două linii (reducere simbolică) și centrarea axei lingvistice în planul teluric.*/
     display: block;
-    height: 1px; /* Grosimea etereală dorită */
-    /* background-color: #2c2c2c; */
-    background-color: #c5c5c5 !important; /* Culoarea de argint oxidat, identică cu header-dividerul */
+    height: 1px;
+    background-color: #c5c5c5 !important;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    margin-left: auto; /* Aliniază liniile la dreapta sub buton */
+    margin-left: auto;
   }
 
-  /* Prima linie (cea de sus) */
   .bar:first-child {
     width: 25px;
     margin-bottom: 7px;
   }
 
-  /* A doua linie (cea de jos) - mai scurtă */
   .bar:last-child {
     width: 16px;
   }
 
-  /* 3. MENIUL DROP-DOWN (The Veil) */
+  /* Dropdown menu: hidden by default (display: none), shown
+     when JavaScript adds .active. Positioned absolutely
+     beneath the navbar. */
   .nav-links {
-    display: none; /* Ascuns până la intervenția JS */
+    display: none;
     flex-direction: column;
     align-items: center;
     gap: 25px;
     position: absolute;
-    top: 100%; /* Se deschide exact sub navbar */
+    top: 100%;
     left: 0;
     width: 100%;
     background-color: #f2f0eb;
@@ -1053,42 +1225,31 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   }
 
   .nav-links.active {
-    display: flex; /* Activare via script.js */
+    display: flex;
   }
 
-  /* Eliminăm orice decalaj lateral pentru selectorul de limbă pe mobil */
+  /* Language selector on mobile: the vertical rule becomes
+     a horizontal line above the language links. Centered. */
   .lang-select {
-    margin: 10px 0 0 0 !important; /* Spațiu mic deasupra */
-    padding: 20px 0 0 0 !important; /* Spațiu pentru linie */
-    border-left: none !important; /* Eliminăm linia verticală de desktop */
-    border-top: 1px solid #dcd7cf; /* LINIA ORIZONTALĂ: Fir fin de oxid */
-    width: 40px; /* Lățimea liniei de separare - o facem scurtă, centrată */
+    margin: 10px 0 0 0 !important;
+    padding: 20px 0 0 0 !important;
+    border-left: none !important;
+    border-top: 1px solid #dcd7cf;
+    width: 40px;
     display: block;
     margin-left: auto !important;
     margin-right: auto !important;
   }
-  /* .lang-select {
-        margin: 0 !important;
-        padding: 0 !important;
-        border: none !important;  Eliminăm și linia verticală de pe desktop 
-        display: flex;
-        justify-content: center;
-        width: 100%; 
-    }*/
 
-  /* Asigurăm centrarea textului în interior */
   .lang-select a {
     display: block;
-    padding-top: 15px; /* Spațiu între linie și textul EN/RO */
+    padding-top: 15px;
     text-align: center;
-    opacity: 0.6; /* O facem mai discretă decât restul meniului */
+    opacity: 0.6;
   }
-  /* .lang-select a {
-        text-align: center;
-        width: auto;
-    } */
 
-  /* 4. HERO & TIPOGRAFIE */
+  /* Hero: tighter padding on mobile, heading scales down
+     from 2.5rem to 1.8rem. */
   .hero {
     padding: 60px 5% 40px;
   }
@@ -1098,20 +1259,44 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
     line-height: 1.2;
   }
 
+  /* Section headers scale down from 4rem/4.5rem to
+     2.5rem/2.75rem — consistent with the hero's mobile
+     typographic scale. */
+  .exhibit-header h1,
+  .collection-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .manifesto-header h1 {
+    font-size: 2.75rem;
+  }
+
+  /* Touch targets: filter buttons and menu toggle must be
+     at least 44px tall for comfortable tapping. */
+  .filter-btn {
+    padding: 12px 18px;
+    min-height: 44px;
+  }
+
+  .mobile-menu-toggle {
+    padding: 15px 10px;
+  }
+
   .hero p {
     font-size: 1rem;
     padding: 0 5%;
   }
 
-  /* 5. GRIDURILE DE PRODUSE & PORTALE */
+  /* Grids collapse to single column on mobile. The asymmetric
+     exhibit grid uses minmax(0, 1fr) to prevent the column
+     from overflowing — fr units track against min-content of
+     image content, which can push the column past the viewport
+     if not constrained. */
   .portal-grid {
-    grid-template-columns: 1fr; /* Stivuire verticală */
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  /* Vitrina: grila asimetrică se stivuiește pe o singură coloană.
-     fr-urile desktopului rezolvă contra min-content al imaginilor și
-     împing a doua coloană în afara viewportului; minmax(0,1fr) + offseturi zero. */
   .exhibit-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 60px;
@@ -1127,23 +1312,6 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
     grid-template-columns: minmax(0, 1fr);
     flex-direction: column;
     padding: 20px 5%;
-  }
-
-  .product-visual {
-    position: static; /* Nu mai rămâne fix, curge natural */
-    margin-bottom: 30px;
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  /* Pe mobil renunțăm la cadrul de înălțime viewport (fix desktop):
-     imaginea revine la proporția ei naturală, iar secțiunile curg
-     una sub alta — galerie (imagine + miniaturi), apoi text. */
-  .gallery-main {
-    height: auto;
-    min-height: 0;
-    aspect-ratio: 4 / 5;
-    max-width: 100%;
     min-width: 0;
   }
 
@@ -1162,7 +1330,6 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
     padding-top: 0;
   }
 
-  /* 6. CONTACT & FOOTER */
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 50px;
@@ -1175,16 +1342,17 @@ Sistemul .reveal + JS: Este o animație inteligentă. Ea „stă la pândă” �
   }
 }
 
+/* ============================================================
+   APPENDIX — LEGACY & ROADMAP
+   Kept at the very bottom so they never interfere with the
+   cascade above. These rules are either legacy experiments
+   or future ideas — they don't affect current pages.
+   ============================================================ */
+
+/* Legacy: full-bleed background image hook for the portal page.
+   Placed AFTER the media query so it applies at every viewport
+   width. Currently points to a placeholder image. */
 #portal-body {
   background-image: url("poza_ta.jpg");
   background-size: cover;
 }
-
-/* ==========================================================
-   FUTURE_REFINEMENTS / ROADMAP (Idei în Gestație)
-   ==========================================================
-   - Experimentarea dualității de fonturi în vitrine.
-   - Titlurile de concepte (Concept Labels) trecute pe Cormorant Garamond Italic.
-   - Numele tehnice de produse (Metal Script #01) păstrate pe Montserrat.
-   - Aplicarea asimetriei de tip Ikebana în grila de produse.
-   ========================================================== */

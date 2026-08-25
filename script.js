@@ -1,8 +1,9 @@
-/* ==========================================================
-TEXXTURALIA: DINAMICA SUBTILĂ (script.js)
-   ========================================================== */
+/* TEXXTURALIA: THE SUBTLE DYNAMICS (script.js)
+   Handles the quiet interactions: hamburger menu, scroll reveal,
+   collection filtering, and the product gallery thumbnail swapper.
+   ========================================================================== */
 
-// --- 1. LOGICA INTEROGĂRII (Hamburger Menu) ---
+// --- 1. HAMBURGER MENU LOGIC ---
 const initMobileMenu = () => {
   const menuToggle = document.querySelector(".mobile-menu-toggle");
   const navLinks = document.querySelector(".nav-links");
@@ -20,7 +21,7 @@ const initMobileMenu = () => {
     menuToggle.addEventListener("click", () => {
       navLinks.classList.toggle("active");
 
-      // Folosim operatorul ternar pentru a schimba opacitatea într-un mod elegant. "Dacă e activ, opacitate 0.5, altfel 1”.
+      // Use the ternary operator for a clean opacity change: "If active, opacity 0.5, otherwise 1".
       menuToggle.style.opacity = navLinks.classList.contains("active")
         ? "0.5"
         : "1";
@@ -28,16 +29,13 @@ const initMobileMenu = () => {
   }
 };
 
-// --- 2. FENOMENOLOGIA APARIȚIEI (Reveal System) ---
+// --- 2. THE REVEAL SYSTEM (scroll-triggered appearance) ---
 const initReveal = () => {
-  console.log("Ochiul gnostic monitorizează elementele..."); // MESAJ DE CONTROL 1
-
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
-          console.log("Un element a ieșit din abis."); // MESAJ DE CONTROL 2
         }
       });
     },
@@ -50,7 +48,7 @@ const initReveal = () => {
   elements.forEach((el) => observer.observe(el));
 };
 
-// --- 3. BIBLIOTECA COLECȚIEI (Collection Filter) ---
+// --- 3. COLLECTION LIBRARY (Collection Filter) ---
 const initCollectionFilter = () => {
   const buttons = document.querySelectorAll(".filter-btn");
   const grid = document.getElementById("collection-grid");
@@ -74,7 +72,7 @@ const initCollectionFilter = () => {
   });
 };
 
-// --- 4. GALERIA DE PRODUS (Thumbnail Swapper + Slider) ---
+// --- 4. PRODUCT GALLERY (Thumbnail Swapper + Slider) ---
 const initGallery = () => {
   const galleries = document.querySelectorAll("[data-gallery]");
   galleries.forEach((gallery) => {
@@ -89,7 +87,7 @@ const initGallery = () => {
       thumb.classList.add("is-active");
     };
 
-    // Slider: swipe / drag cu mâusa pe scrollerul nativ.
+    // Slider: mouse drag on the native scroll container.
     if (viewport) {
       let isDragging = false;
       let startX = 0;
@@ -114,10 +112,10 @@ const initGallery = () => {
       viewport.addEventListener("pointerup", endDrag);
       viewport.addEventListener("pointerleave", endDrag);
 
-      // Click pe o piculă — selectează, dar nu după o drag reală.
+      // Click on a thumbnail — select it, but not after a real drag.
       thumbs.forEach((thumb) => {
         thumb.addEventListener("click", () => {
-          if (moved > 10) return; // a fost o drag, nu un click
+          if (moved > 10) return; // it was a drag, not a click
           setMain(thumb);
         });
       });
@@ -125,7 +123,7 @@ const initGallery = () => {
   });
 };
 
-// --- 5. PORNIREA MECANISMULUI (Initialization) ---
+// --- 5. TURNING ON THE MECHANISM (Initialization) ---
 document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initReveal();

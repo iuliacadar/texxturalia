@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <title>Scripts | Metal Jewelry by Texxturalia</title> -->
     <title>Corvus | Sacral Scripts by Texxturalia</title>
     <meta
       name="description"
@@ -11,7 +10,7 @@
     />
     <link rel="icon" type="image/x-icon" href="images/branding/favicon.ico" />
     <link rel="stylesheet" href="style.css" />
-    <!-- Fonturile rămân identice pentru unitatea brandului -->
+    <!-- Google Fonts — same brand fonts for visual unity -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,10 +20,9 @@
   </head>
   <body>
     <nav class="navbar">
-      <!-- În stilul minimalist, Logo-ul este cel care funcționează ca buton de „Acasă” (Home). Vizitatorul se așteaptă ca, dacă dă click pe textul T E X X T U A L E, să fie dus înapoi la poarta principală (portaluri).
-        Corectura pentru toate fișierele HTML:
-        În interiorul <nav class="navbar">, trebuie să înfășor div-ul logo-ului într-un link (<a>). -->
-      <!-- <a href="index.html"> -->
+      <!-- In minimalist style, the Logo acts as the "Home" button.
+           Clicking the T E X X T U R A L I A text returns the visitor
+           to the main portal (index.html). -->
       <a href="index.html">
         <div class="logo">T E X X T U R A L I A</div>
       </a>
@@ -45,10 +43,11 @@
       </ul>
     </nav>
 
-    <!-- Un element suporta mai multe clase separate aplicate aceluiași element. În HTML, poți „îmbrăca” un tag cu mai multe haine (clase) în același timp, despărțindu-le prin spațiu.
-    Am ales pentru bijuterii:
-    exhibit-container (Structura): Este clasa „mamă”. Ea spune: „Acesta este un container de vitrină, fă-l lat de 1400px și centrează-l”. Se aplică la toate vitrinele (Textile, Bijuterii, Decor).
-    jewelry-theme (Atmosfera): Este clasa „specializată”. Ea spune: „Pentru această vitrină specifică, folosește nuanțele de cupru/oxid”. -->
+    <!-- Theme class .jewelry-theme applies the copper/oxide chromatic ambiance
+         to all child elements (image-wrapper backgrounds, hover states, etc.).
+         Multiple classes on one element are space-separated in HTML —
+         here .exhibit-container provides the layout skeleton,
+         .jewelry-theme provides the color atmosphere. -->
     <main class="exhibit-container jewelry-theme">
       <header class="exhibit-header">
         <span class="eyebrow">Sacral Scripts</span>
@@ -60,13 +59,12 @@
       </header>
 
       <section class="exhibit-grid">
-        <!-- Piesa 01 (Stânga - Dominantă) -->
+        <!-- Piece 01 (Left — Dominant) -->
         <div class="exhibit-item reveal">
           <a href="items/jewelry/metal-script-01.html">
             <div class="image-wrapper">
-              <!-- Placeholder pentru imagine: o înlocuiești cu poza ta -->
+              <!-- Placeholder — replace with your photo -->
               <div class="image-placeholder medium"></div>
-              <!-- TODO: Înlocuiește div-ul de mai jos cu tag-ul <img> după ședința foto -->
             </div>
             <div class="item-info">
               <span class="item-number">01</span>
@@ -75,13 +73,12 @@
           </a>
         </div>
 
-        <!-- Piesa 02 (Dreapta - Secundară, va fi împinsă jos de CSS) -->
+        <!-- Piece 02 (Right — Secondary, pushed down by CSS) -->
         <div class="exhibit-item reveal">
           <a href="items/jewelry/metal-script-02.html">
             <div class="image-wrapper">
-              <!-- Placeholder pentru imagine: o înlocuiești cu poza ta -->
+              <!-- Placeholder — replace with your photo -->
               <div class="image-placeholder short"></div>
-              <!-- TODO: Înlocuiește div-ul de mai jos cu tag-ul <img> după ședința foto -->
             </div>
             <div class="item-info">
               <span class="item-number">02</span>
@@ -90,13 +87,12 @@
           </a>
         </div>
 
-        <!-- Piesa 03 (Revine pe coloana 1) -->
+        <!-- Piece 03 (returns to column 1) -->
         <div class="exhibit-item reveal">
           <a href="#">
             <div class="image-wrapper">
-              <!-- Placeholder pentru imagine - preia culoarea de azot din CSS  -->
+              <!-- Placeholder — inherits the nitrogen color from CSS -->
               <div class="image-placeholder h-450"></div>
-              <!-- TODO: Înlocuiește div-ul de mai jos cu tag-ul <img> după ședința foto -->
             </div>
             <div class="item-info">
               <span class="item-number">03</span>
@@ -105,13 +101,12 @@
           </a>
         </div>
 
-        <!-- Piesa 04 ( Piesa a doua cade mult, piesa a patra cade mai puțin) -->
+        <!-- Piece 04 (piece 2 drops more, piece 4 drops less) -->
         <div class="exhibit-item reveal">
           <a href="items/jewelry/metal-script-02.html">
             <div class="image-wrapper">
-              <!-- Placeholder pentru imagine: o înlocuiești cu poza ta -->
+              <!-- Placeholder — replace with your photo -->
               <div class="image-placeholder h-520"></div>
-              <!-- TODO: Înlocuiește div-ul de mai jos cu tag-ul <img> după ședința foto -->
             </div>
             <div class="item-info">
               <span class="item-number">04</span>
@@ -127,7 +122,6 @@
         <p>&copy; 2024 TEXXTURALIA. All rights reserved.</p>
         <div class="footer-links">
           <a href="contact.html">Texxt Us</a>
-          <!-- Cale directă -->
           <a href="https://www.instagram.com/j_e_w_e_l_l_i_a/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>

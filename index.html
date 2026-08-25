@@ -1,24 +1,24 @@
-﻿<!--index.html is the Main Entry Point (like the main.py in Python Projects). Its job is to: introduces the brand Texxturalia, provide Doors (Links) to my specific workshops (Textiles, Decor, Jewlery)-->
+﻿<!-- index.html — Main entry point (like main.py in a Python project).
+     Introduces the Texxturalia brand and provides portal links
+     (doors) to each workshop: Textiles, Jewelry, Decor. -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Texxturalia Atelier | Atavic Envelopes & Sacral Scripts</title>
-    <!--vechi: "The Texxturalia Atelier | Structural Layers & Spatial Dialect(ic)s"-->
     <meta
       name="description"
       content="Texxturalia Atelier - Interrogating the thread between the body, the room, and the wire through unique textile and metal works."
     />
     <link rel="icon" type="image/x-icon" href="images/branding/favicon.ico" />
     <link rel="stylesheet" href="style.css" />
-    <!-- This brnigs in a high-end font for my brand -->
-    <!-- Fonturile pentru Texxturalia: Montserrat (modern/geometric) + Cormorant (clasic/rafinat) -->
-    <!-- 1. Deschide conexiunea cu serverul de nume -->
+    <!-- Google Fonts: Montserrat (modern/geometric) + Cormorant (classic/refined) -->
+    <!-- Step 1: Preconnect to the font name server for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <!-- 2. Deschide conexiunea cu serverul de fișiere (atenție la fonts.gstatic) -->
+    <!-- Step 2: Preconnect to the font file server (note crossorigin) -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- 3. Cere pachetul specific: Montserrat (100-400) și Cormorant (300-400 + Italic) -->
+    <!-- Step 3: Request the specific font package: Montserrat (100-400) + Cormorant (300-400 + Italic) -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@100;200;300;400&display=swap"
@@ -26,12 +26,12 @@
   </head>
 
   <body>
-    <!-- 1. MENIUL (Navigația) -->
+    <!-- 1. NAVIGATION (Navbar) -->
     <nav class="navbar">
       <a href="index.html">
         <div class="logo">T E X X T U R A L I A</div>
       </a>
-      <!-- [JS PHASE]  Aici e inserat butonul Hamburger -->
+      <!-- Hamburger menu button — inserted here by JS phase -->
       <button class="mobile-menu-toggle" aria-label="Open Menu">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -39,11 +39,8 @@
 
       <ul class="nav-links">
         <li><a href="textiles.html">Atavic Envelopes</a></li>
-        <!-- Fostul Layers -->
         <li><a href="jewelry.html">Sacral Scripts</a></li>
-        <!-- Fostul Scripts -->
         <li><a href="decor.html">Telluric Dialect(ic)s</a></li>
-        <!-- Fostul Dialect(ic)s -->
         <li><a href="guests.html">InterTexxturalia</a></li>
         <li><a href="manifesto.html">Gnosis</a></li>
 
@@ -52,66 +49,50 @@
       </ul>
     </nav>
 
-    <!-- 2. ANTETUL (Hero Section) -->
+    <!-- 2. HERO SECTION (Header) -->
     <header class="hero">
       <div class="hero-content">
         <h1>Interrogating the Chasm</h1>
-        <!--am schimbat din <h2> in <h1>?-->
-        <!-- Vechi: <h2>Interrogating Form</h2> -->
         <p>
           (De(Con))Struction of the thread. Betwixt and between the atavic
           raiment, the telluric plane, and the sacrality of the sidereal wire.
         </p>
-        <!--Pun punct la finalul paragrafului?-->
-        <!-- Vechi: <p>(De(Con))Structing the thread between the body, the room, and the wire</p> -->
 
-        <!-- GRILA CU CELE 4 PORTALURI -->
+        <!-- 4-portal grid: each portal is a doorway to one workshop -->
         <div class="portal-grid">
-          <!-- 01. The Body/Atavic Envelopes The Body -->
+          <!-- 01. The Body / Atavic Envelopes (Textiles) -->
           <div class="portal-item reveal" id="portal-body">
             <a href="textiles.html" class="btn-primary">
-              <!-- <span class="anchor-label">The Body</span> -->
               <span class="anchor-label">Arachne</span>
-              <span class="concept-label"
-                ><!--TODO: Testare Cormorant Italic aici -->Atavic
-                Envelopes</span
-              >
-              <!--Vechi: Structural Layers-->
+              <span class="concept-label">Atavic Envelopes</span>
             </a>
           </div>
 
-          <!-- 02. The Wire/Sacral Scripts -->
+          <!-- 02. The Wire / Sacral Scripts (Jewelry) -->
           <div class="portal-item reveal" id="portal-wire">
             <a href="jewelry.html" class="btn-primary">
-              <!-- <span class="anchor-label">The Wire</span> -->
               <span class="anchor-label">Corvus</span>
               <span class="concept-label">Sacral Scripts</span>
-              <!--Vechi: Metal Scripts-->
             </a>
           </div>
 
-          <!-- 03. The Room/Telluric Dialect(ic)s -->
+          <!-- 03. The Room / Telluric Dialect(ic)s (Decor) -->
           <div class="portal-item reveal" id="portal-room">
             <a href="decor.html" class="btn-primary">
-              <!-- <span class="anchor-label">The Room</span> -->
               <span class="anchor-label">Leto</span>
               <span class="concept-label">Telluric Dialect(ic)s</span>
-              <!--Vechi: Spatial Dialect(ic)s-->
             </a>
           </div>
 
-          <!-- 04. The Dialogue -->
+          <!-- 04. The Dialogue / InterTexxturalia (Guests) -->
           <div class="portal-item reveal" id="portal-guests">
             <a href="guests.html" class="btn-primary">
-              <!-- <span class="anchor-label">The Dialogue</span> -->
               <span class="anchor-label">Actaeon</span>
               <span class="concept-label">InterTexxturalia</span>
             </a>
           </div>
         </div>
-        <!-- închide .portal-grid -->
       </div>
-      <!-- închide .hero.content-->
     </header>
 
     <footer class="site-footer">
@@ -119,7 +100,6 @@
         <p>&copy; 2024 TEXXTURALIA. All rights reserved.</p>
         <div class="footer-links">
           <a href="contact.html">Texxt Us</a>
-          <!-- Cale directă -->
           <a href="https://www.instagram.com/t_e_x_x_t_u_r_a_l_i_a/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>

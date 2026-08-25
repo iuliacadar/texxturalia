@@ -1,62 +1,70 @@
-# Texxturalia Project | The Cultural & Artisanal Design Hub
+# Texxturalia
 
-An immersive, responsive e-commerce matrix and artisanal manifesto mapping out curated design spaces spanning textiles, custom jewelry, and retro-futuristic decor elements.
+A bilingual (EN/RO) static e-gallery and artisanal boutique for one-of-a-kind
+textile art, sculptural jewelry, and decor objects — hand-built in plain
+HTML/CSS/JS, no framework, no build step.
 
- **Live Interface Platform Deployment:** [iuliacadar.github.io/texxturalia/](https://iuliacadar.github.io/texxturalia/)
+**Live:** [iuliacadar.github.io/texxturalia](https://iuliacadar.github.io/texxturalia/)
+**Author:** Iulia-Alexandra Cadar
 
----
+> *Telluric dialect(ic)s woven betwixt and between.*
 
-## Core System Architecture & File Layout
+## What this project is
 
-The codebase operates on a decoupled multi-page template structure, isolating specific material domains and administrative assets into dedicated grid matrices:
+A museum-like walk through four exhibition rooms (Textiles, Jewelry, Decor,
+Guests), each piece presented as a curated exhibit with its own page — not a
+grid-driven webshop. The purchase path is deliberately conversational
+(`mailto:` inquiry): for unique pieces, buyers expect human confirmation.
+
+## Tech stack
+
+| Layer      | Choice                                   |
+|------------|------------------------------------------|
+| Markup     | Semantic HTML5, multi-page               |
+| Styling    | Single `style.css`, mobile-first breakpoints |
+| Behavior   | Vanilla JS (`script.js`): menu, scroll-reveal |
+| Hosting    | GitHub Pages                             |
+| i18n       | Static mirroring (`/ro/` folder)         |
+
+## Documentation
+
+| File                    | Contents                                        |
+|-------------------------|-------------------------------------------------|
+| [`docs/BRAND.md`](docs/BRAND.md)             | Aesthetic vision, palette, symbolism, naming |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | File layout, CSS organization, pathing rules, checklists |
+| [`docs/DECISIONS.md`](docs/DECISIONS.md)     | Key decisions and their rationale             |
+| [`BACKLOG.md`](BACKLOG.md)                   | Open tasks and future ideas                   |
+| [`LEARNING.md`](LEARNING.md)                 | Personal study notes from building this       |
+| [`RESOURCES.md`](RESOURCES.md)               | Tools, references, bibliography               |
+
+## Run locally
+
+```bash
+git clone https://github.com/iuliacadar/texxturalia.git
+cd texxturalia
+# open index.html in a browser, or use any static server, e.g.:
+python -m http.server 8000
+```
+
+## Project structure
 
 ```text
 texxturalia/
-├── index.html            # The primary gallery gate & central storefront experience
-├── textiles.html         # Curated window: textile arts and fabric matrices
-├── jewelry.html          # Curated window: artisanal jewelry showcases
-├── decor.html            # Curated window: interior design nodes
-├── guests.html           # Curated window: guest designers dialogue
-├── collection.html       # The full archive — every piece, filterable by domain
-├── manifesto.html        # The core conceptual philosophy & brand vision archive
-├── contact.html          # Secure communications relay and user interface forms
-├── 404.html              # Custom system routing fault override screen
-├── BACKLOG.md            # Future ideas: data-driven automation, gallery, payments
-├── style.css             # Unified architecture style specification sheets
-├── script.js             # Interaction logic: menu, reveal, filters, gallery
-├── .gitignore            # Repository ignore rules
-├── ro/                   # Localized Romanian system translation folders
-├── images/branding/      # Core SVG/Vector asset layouts for identity node deployment
-└── images/products/      # Product photography, organised by domain
+├── index.html            # Home / portal hub
+├── textiles.html         # Showcase: textiles
+├── jewelry.html          # Showcase: jewelry
+├── decor.html            # Showcase: decor objects
+├── guests.html           # Showcase: guest designers
+├── collection.html       # Full archive of every piece
+├── manifesto.html        # Brand philosophy (typographic essay)
+├── contact.html          # Contact ("Texxt Us")
+├── 404.html              # Custom not-found page ("The snapped thread")
+├── style.css             # All styling, organized general → specific
+├── script.js             # Menu toggle + scroll reveal
+├── ro/                   # Romanian mirror of every page
+├── items/                # Individual product pages, by domain
+│   └── jewelry/…
+└── images/
+    ├── branding/         # Favicon & identity assets
+    └── products/         # Photography, organized by domain
 ```
-
----
-
-## Key Interface Achievements
-
-*   **Multi-Domain Dynamic Partitioning**: Isolated product categories (`textiles`, `jewelry`, `decor`) into individual structural nodes to drop system load times and maximize navigation context.
-*   **Localized Translation Ready**: Deployed an independent local language sub-directory `/ro` to safely prepare system assets for multilingual internationalization pipelines without altering core document logic.
-*   **Custom Vector Infrastructure**: Structured custom asset paths under `/images/branding` using vector formats to retain resolution scalability across high-DPI displays.
-
----
-
-## Local Installation & Development Deployment
-
-To spin up this artisanal matrix locally and audit layout metrics across system pages, execute the following commands in your local client shell workspace:
-
-1. **Clone the repository instance securely from the server hub:**
-   ```bash
-   git clone https://github.com/iuliacadar/texxturalia.git
-   ```
-2. **Navigate directly into the project base root layout directory:**
-   ```bash
-   cd texxturalia
-   ```
-3. **Launch the platform via any live local server host utility.**
-
----
-
-### Mission Log Metadata Status
-*   **SYS_ORBIT**: `TEXTUAL_DESIGN_EXPEDITION`
-*   **STATUS**: `INFRASTRUCTURE_STABLE`
-*   **AUTHOR**: `Iulia-Alexandra Cadar`

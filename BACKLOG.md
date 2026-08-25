@@ -56,9 +56,7 @@ and beautiful — but it does not scale to a hundred pieces. The long answer to
 
 ## Code & Maintenance
 
-- [ ] **Placeholder tiles** — the four placeholder pieces in the gallery
-      pages (`Wire Fragment`, `Spatial Knot`, `Finger Architecture`,
-      `Raven's Eye`) will be replaced by real curated pieces.
+- [x] **Comment audit & cleanup (ALL files)** — Every `.html`, `.css`, `.js`, and `.md` file in the project has been reviewed. Romanian comments translated to English. Stale/debug comments removed. Missing explanations added. A frontend novice can now read any file and understand what each block does. See [`docs/COMMENT_CLEANUP_REPORT.md`](docs/COMMENT_CLEANUP_REPORT.md) for full details.
 
 ## Backend Dreams (when the journey allows)
 
