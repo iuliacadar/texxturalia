@@ -8,3 +8,11 @@ Thumbs.db
 # Temp
 *.tmp
 *~
+
+# QA artifacts
+.mobqa/
+.qa_review_*/
+.qa_t*/
+
+# Session exports (Hermes session transcripts, not project docs)
+*.md-for-clarity.md
